@@ -1,10 +1,18 @@
 import { useState } from 'react'
 import styles from './TopOfApp.module.css'
+import NewRecipeForm from './NewRecipeForm';
+import SavedRecipes from './SavedRecipes';
+import LifeForm from './LifeForm';
 
 export default function TopOfApp () {
 
+    //  STATE VARIABLES
     const [activeButton, setActiveButton] = useState<string | null>(null);
 
+    /**
+     * Decides which button is active
+     * @param button is the name of the button that is clicked
+     */
     function toggleActiveButton(button: string) {
         if (activeButton === button) {
             setActiveButton(null);
@@ -14,11 +22,15 @@ export default function TopOfApp () {
     }
 
     return (
-        <section>
-            <nav id={styles.globalNav}>
+        <div>
 
+            {/* GLOBAL NAVIGATION */}
+            <nav id={styles.globalNav}>
+                
+                {/* NEW RECIPE BUTTON */}
                 <button 
                     onClick={() => toggleActiveButton('newRecipe')}
+                    id={styles.newRecipeButton}
                     className={activeButton === 'newRecipe' ? styles.activeNavButton : ''}
                 >
                     New recipe
@@ -27,9 +39,11 @@ export default function TopOfApp () {
                         className={activeButton === 'newRecipe' ? styles.flippedImg : ''}
                     />
                 </button>
-
+                
+                {/* SAVED RECIPES BUTTON */}
                 <button 
                     onClick={() => toggleActiveButton('savedRecipes')}
+                    id={styles.savedRecipesButton}
                     className={activeButton === 'savedRecipes' ? styles.activeNavButton : ''}
                 >
                     Saved recipes
@@ -39,8 +53,10 @@ export default function TopOfApp () {
                     />
                 </button>
 
+                {/* LIFE BUTTON */}
                 <button 
                     onClick={() => toggleActiveButton('life')}
+                    id={styles.lifeButton}
                     className={activeButton === 'life' ? styles.activeNavButton : ''}
                 >
                     Life
@@ -51,6 +67,13 @@ export default function TopOfApp () {
                 </button>
 
             </nav>
-        </section>
+
+            {
+                activeButton === 'newRecipe' ? <NewRecipeForm /> :
+                activeButton === 'savedRecipes' ? <SavedRecipes /> :
+                activeButton === 'life' ? <LifeForm /> 
+                : null
+            }
+        </div>
     )
 }

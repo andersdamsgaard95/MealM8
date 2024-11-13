@@ -3,7 +3,6 @@
 }
 #globalNav button {
   all: unset;
-  border: solid black 1px;
   padding: 20px 10px 20px 10px;
   background-color: #B7E4E9;
   cursor: pointer;
@@ -20,6 +19,17 @@
 #globalNav button .flippedImg {
   transform: rotate(180deg);
   transition: transform 0.3s ease;
+}
+#globalNav #newRecipeButton {
+  border-bottom: 1px black solid;
+}
+#globalNav #savedRecipesButton {
+  border-bottom: 1px black solid;
+  border-right: 1px black solid;
+  border-left: 1px black solid;
+}
+#globalNav #lifeButton {
+  border-bottom: 1px black solid;
 }
 #globalNav .activeNavButton {
   border-bottom: none !important;

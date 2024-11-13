@@ -2,3 +2,24 @@
 $globalNavColor: #B7E4E9;
 $activeNavColor: #C1F1F7;
 
+//  MIXINS
+@mixin colorCodeHeading ($width: 25px, $color: #9CDAA0) {
+    border: solid 1px black;
+    background-color: white;
+    height: 2em;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+        .colorCode {
+            height: 100%;
+            width: $width;
+            background-color: $color;
+            border-radius: 5px 0 0 5px;
+        }
+
+        .heading {
+            font-size: 1em;
+        }
+}
