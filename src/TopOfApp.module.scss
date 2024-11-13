@@ -1,0 +1,32 @@
+@use 'partial';
+
+#globalNav {
+    display: flex;
+    
+        button {
+            all: unset;
+            border: solid black 1px;
+            padding: 20px 10px 20px 10px;
+            background-color: partial.$globalNavColor;
+            cursor: pointer;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+
+                img {
+                    height: 2em;
+                    transition: transform 0.3s ease;
+                }
+                .flippedImg {
+                    transform: rotate(180deg);
+                    transition: transform 0.3s ease;
+                }
+        }
+
+        .activeNavButton {
+            border-bottom: none !important;
+            background-color: partial.$activeNavColor !important;
+        }
+}

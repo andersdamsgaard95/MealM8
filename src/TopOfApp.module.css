@@ -1,0 +1,27 @@
+#globalNav {
+  display: flex;
+}
+#globalNav button {
+  all: unset;
+  border: solid black 1px;
+  padding: 20px 10px 20px 10px;
+  background-color: #B7E4E9;
+  cursor: pointer;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+#globalNav button img {
+  height: 2em;
+  transition: transform 0.3s ease;
+}
+#globalNav button .flippedImg {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
+}
+#globalNav .activeNavButton {
+  border-bottom: none !important;
+  background-color: #C1F1F7 !important;
+}/*# sourceMappingURL=TopOfApp.module.css.map */
