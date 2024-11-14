@@ -21,5 +21,13 @@ $activeNavColor: #C1F1F7;
 
         .heading {
             font-size: 1em;
+            width: 100%;
         }
+}
+
+@mixin hiddenAccordion {
+    max-height: 0;
+    padding: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
 }

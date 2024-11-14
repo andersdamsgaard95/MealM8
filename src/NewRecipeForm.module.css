@@ -9,7 +9,7 @@ form #formHeadingPlusInputs {
   border: solid 1px #3E7EFF;
   border-radius: 5px;
 }
-form #formHeadingPlusInputs #colorCodeHeading {
+form #formHeadingPlusInputs .colorCodeHeading {
   border: solid 1px black;
   background-color: white;
   height: 2em;
@@ -18,14 +18,34 @@ form #formHeadingPlusInputs #colorCodeHeading {
   align-items: center;
   gap: 10px;
 }
-form #formHeadingPlusInputs #colorCodeHeading .colorCode {
+form #formHeadingPlusInputs .colorCodeHeading .colorCode {
   height: 100%;
   width: 25px;
   background-color: #9CDAA0;
   border-radius: 5px 0 0 5px;
 }
-form #formHeadingPlusInputs #colorCodeHeading .heading {
+form #formHeadingPlusInputs .colorCodeHeading .heading {
   font-size: 1em;
+  width: 100%;
+}
+form #formHeadingPlusInputs .colorCodeHeadingLife {
+  border: solid 1px black;
+  background-color: white;
+  height: 2em;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+form #formHeadingPlusInputs .colorCodeHeadingLife .colorCode {
+  height: 100%;
+  width: 25px;
+  background-color: black;
+  border-radius: 5px 0 0 5px;
+}
+form #formHeadingPlusInputs .colorCodeHeadingLife .heading {
+  font-size: 1em;
+  width: 100%;
 }
 form #formHeadingPlusInputs #formInputs {
   padding: 10px;
@@ -64,4 +84,72 @@ form button img {
   right: 10px;
   top: 50%;
   transform: translatey(-50%);
+}
+
+#savedActivitiesContainer {
+  background-color: #C1F1F7;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+#savedActivitiesContainer .savedActivitiesAccordion {
+  border: solid 1px #3E7EFF;
+  border-radius: 5px;
+}
+#savedActivitiesContainer .savedActivitiesAccordion .colorCodeHeading {
+  border: solid 1px black;
+  background-color: white;
+  height: 2em;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+#savedActivitiesContainer .savedActivitiesAccordion .colorCodeHeading .colorCode {
+  height: 100%;
+  width: 25px;
+  background-color: black;
+  border-radius: 5px 0 0 5px;
+}
+#savedActivitiesContainer .savedActivitiesAccordion .colorCodeHeading .heading {
+  font-size: 1em;
+  width: 100%;
+}
+#savedActivitiesContainer .savedActivitiesAccordion .colorCodeHeading img {
+  height: 2em;
+  margin-left: auto;
+  margin-right: 10px;
+  transition: transform 0.3s ease;
+}
+#savedActivitiesContainer .savedActivitiesAccordion .colorCodeHeading img.flippedArrow {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
+}
+#savedActivitiesContainer .savedActivitiesAccordion .savedActivitiesAccordionHidden {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: #DFF1F4;
+  padding: 10px;
+  border-radius: 5px;
+  transform-origin: top;
+  transition: transform 0.3s ease, padding 0.3s ease;
+  overflow: hidden;
+}
+#savedActivitiesContainer .savedActivitiesAccordion .savedActivitiesAccordionHidden input, #savedActivitiesContainer .savedActivitiesAccordion .savedActivitiesAccordionHidden ol {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #737272;
+  background-color: white;
+}
+#savedActivitiesContainer .savedActivitiesAccordion .savedActivitiesAccordionHidden.hidden {
+  transform: scaleY(0);
+  padding: 0;
+  height: 0;
+}
+#savedActivitiesContainer .savedActivitiesAccordion .savedActivitiesAccordionHidden.visible {
+  transform: scaleY(1);
 }/*# sourceMappingURL=NewRecipeForm.module.css.map */

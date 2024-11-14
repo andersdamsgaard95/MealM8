@@ -1,4 +1,4 @@
-@use 'partial';
+@import 'partial';
 
 #globalNav {
     display: flex;
@@ -6,7 +6,7 @@
         button {
             all: unset;
             padding: 20px 10px 20px 10px;
-            background-color: partial.$globalNavColor;
+            background-color: $globalNavColor;
             cursor: pointer;
             flex: 1;
             display: flex;
@@ -38,6 +38,6 @@
 
         .activeNavButton {
             border-bottom: none !important;
-            background-color: partial.$activeNavColor !important;
+            background-color: $activeNavColor !important;
         }
 }

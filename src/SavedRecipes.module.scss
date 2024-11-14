@@ -1,0 +1,67 @@
+@import 'partial';
+
+#savedRecipesSection {
+    background-color: $activeNavColor;
+    padding: 10px;
+
+        .accordion {
+            border: solid 1px #3E7EFF;
+            border-radius: 5px;
+
+                .colorCodeHeading {
+                    @include colorCodeHeading($width: 28.5px);
+                    cursor: pointer;
+                    
+                    img {
+                        height: 2em;
+                        margin-left: auto;
+                        margin-right: 10px;
+                        transition: transform 0.3s ease;
+                    }
+                    img.flippedArrow {
+                        transform: rotate(180deg);
+                        transition: transform 0.3s ease;
+                    }
+                }
+        
+                .visibleAccordion {
+                    padding: 10px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    background-color: #DFF1F4;
+                    border-radius: 5px;
+                    transition: transform 0.3s ease, padding 0.3s ease;
+                    transform-origin: top;
+                    overflow: hidden;
+
+                        .sortAndSearch {
+                            display: flex;
+                            gap: 10px;
+                            
+                                select, input {
+                                    border-radius: 5px;
+                                    border: 1px solid #737272;
+                                    padding: 10px;
+                                }
+                        }
+
+                        ol {
+                            background-color: white;
+                            border-radius: 5px;
+                            border: 1px solid #737272;
+                            padding: 10px;
+                        }
+                }
+
+                .hidden {
+                    transform: scaleY(0);
+                    padding: 0;
+                    height: 0;
+                }
+                
+                .visible {
+                    transform: scaleY(1);
+                }
+        }
+}

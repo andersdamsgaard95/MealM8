@@ -22,7 +22,7 @@ export default function TopOfApp () {
     }
 
     return (
-        <div>
+        <>
 
             {/* GLOBAL NAVIGATION */}
             <nav id={styles.globalNav}>
@@ -69,11 +69,29 @@ export default function TopOfApp () {
             </nav>
 
             {
-                activeButton === 'newRecipe' ? <NewRecipeForm /> :
-                activeButton === 'savedRecipes' ? <SavedRecipes /> :
-                activeButton === 'life' ? <LifeForm /> 
+                activeButton === 'newRecipe' ? 
+                    <NewRecipeForm 
+                        heading={'what meal (recipe) are you making?'}
+                        inputId={'mealName'}
+                        inputPlaceholder={'Giv dit måltid et navn! ...Lasagne?'}
+                        textareaId={'mealRecipe'}
+                        textareaPlaceholder={'- 1x egg plant?... - 200g ost?...'}
+                        buttonText={'Save this recipe'}
+                    /> :
+                activeButton === 'savedRecipes' ? 
+                    <SavedRecipes /> :
+                activeButton === 'life' ? 
+                    <NewRecipeForm
+                        heading={'New activity'}
+                        inputId={'activityName'}
+                        inputPlaceholder={'Whats the activity? ...Work? Surf?'}
+                        textareaId={'activityNote'}
+                        textareaPlaceholder={'Details? ...Low tide is 05.20am?'}
+                        buttonText={'Save this activity'}
+                        activeButton={activeButton}
+                    /> 
                 : null
             }
-        </div>
+        </>
     )
 }
