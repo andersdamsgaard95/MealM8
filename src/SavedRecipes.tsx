@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import styles from './SavedRecipes.module.css';
+import { SavedMeal } from './TopOfApp';
 
-export default function SavedRecipes () {
+export default function SavedRecipes ({ savedMeals }) {
 
     const [accordion, setAccordion] = useState(true);
 
@@ -42,7 +43,11 @@ export default function SavedRecipes () {
                     </div>
                     <ol>
                         {/* Render saved meals list */}
-                        <p>You dont have any saved meals yet...</p>
+                        {savedMeals.map((savedMeal:SavedMeal, index:number) => (
+                            <li key={index}>
+                                <p>{savedMeal.mealName}</p>
+                            </li>
+                        ))}
                     </ol>
                 </div>
             </div>

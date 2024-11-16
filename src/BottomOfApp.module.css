@@ -6,17 +6,19 @@
   overflow: hidden;
   position: relative;
 }
-#bottomOfAppBackground #dayContainer {
-  border-radius: 5px;
+#bottomOfAppBackground #dayBackground {
   border: 1px solid black;
-  background-color: white;
   padding: 10px;
+  height: 100%;
+  background-color: white;
+  border-radius: 5px;
+}
+#bottomOfAppBackground #dayBackground #dayContainer {
   height: 100%;
   overflow: hidden;
 }
-#bottomOfAppBackground #dayContainer #dayCarousel {
+#bottomOfAppBackground #dayBackground #dayContainer #dayCarousel {
   height: 100%;
   display: flex;
-  gap: 10px;
   transition: transform 0.5s ease;
 }/*# sourceMappingURL=BottomOfApp.module.css.map */

@@ -3,10 +3,17 @@ import styles from './TopOfApp.module.css'
 import NewRecipeForm from './NewRecipeForm';
 import SavedRecipes from './SavedRecipes';
 
+export interface SavedMeal {
+    mealName: string;
+    mealRecipe: string;
+}
+
 export default function TopOfApp () {
 
     //  STATE VARIABLES
     const [activeButton, setActiveButton] = useState<string | null>(null);
+    const [savedMeals, setSavedMeals] = useState<SavedMeal[]>([]);
+    const [savedActivities, setSavedActivities] = useState([]);
 
     /**
      * Decides which button is active
@@ -76,9 +83,12 @@ export default function TopOfApp () {
                         textareaId={'mealRecipe'}
                         textareaPlaceholder={'- 1x egg plant?... - 200g ost?...'}
                         buttonText={'Save this recipe'}
+                        setSavedList={setSavedMeals}
                     /> :
                 activeButton === 'savedRecipes' ? 
-                    <SavedRecipes /> :
+                    <SavedRecipes
+                        savedMeals={savedMeals}
+                    /> :
                 activeButton === 'life' ? 
                     <NewRecipeForm
                         heading={'New activity'}
@@ -88,8 +98,8 @@ export default function TopOfApp () {
                         textareaPlaceholder={'Details? ...Low tide is 05.20am?'}
                         buttonText={'Save this activity'}
                         activeButton={activeButton}
-                    /> 
-                : null
+                    /> : 
+                    null
             }
         </>
     )

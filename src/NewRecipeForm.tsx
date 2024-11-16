@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styles from './NewRecipeForm.module.css';
+import { SavedMeal } from './TopOfApp';
 
 interface NewRecipeFormProps {
     heading: string,
@@ -8,12 +9,15 @@ interface NewRecipeFormProps {
     textareaId: string,
     textareaPlaceholder: string,
     buttonText: string,
-    activeButton?: string
+    activeButton?: string,
+    setSavedList: React.Dispatch<React.SetStateAction<SavedMeal[]>>;
 }
 
-export default function NewRecipeForm ({ heading, inputId, inputPlaceholder, textareaId, textareaPlaceholder, buttonText, activeButton }: NewRecipeFormProps) {
+export default function NewRecipeForm ({ heading, inputId, inputPlaceholder, textareaId, textareaPlaceholder, buttonText, activeButton, setSavedList }: NewRecipeFormProps) {
 
     const [accordion, setAccordion] = useState(false);
+    const [newMealName, setNewMealName] = useState('');
+    const [newMealRecipe, setNewMealRecipe] = useState('');
 
     function toggleAccordion() {
         if (accordion === true) {
@@ -23,10 +27,37 @@ export default function NewRecipeForm ({ heading, inputId, inputPlaceholder, tex
         }
     }
 
+    function handleChange(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
+        const { id, value } = event.target;
+
+        switch (id) {
+            case 'mealName':
+                setNewMealName(value);
+                break;
+            case 'mealRecipe':
+                setNewMealRecipe(value);
+                break;
+        }
+    } 
+
+    function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+        e.preventDefault();
+
+        setSavedList((prev) => [
+            ...prev,
+            {
+                mealName: newMealName,
+                mealRecipe: newMealRecipe
+            }
+        ])
+        setNewMealName('');
+        setNewMealRecipe('');
+    }
+
     return (
         <section>
             {/* FORM */}
-            <form id={styles.newRecipeForm}>
+            <form id={styles.newRecipeForm} onSubmit={handleSubmit}>
                 <div id={styles.formHeadingPlusInputs}>
                     <div className={`${activeButton === 'life' ? styles.colorCodeHeadingLife : styles.colorCodeHeading}`}>
                         <div className={styles.colorCode}></div>
@@ -38,6 +69,8 @@ export default function NewRecipeForm ({ heading, inputId, inputPlaceholder, tex
                                 type="text"
                                 id={inputId}
                                 placeholder={inputPlaceholder}
+                                onChange={handleChange}
+                                value={newMealName}
                                 required
                             />
                         </label>
@@ -45,6 +78,8 @@ export default function NewRecipeForm ({ heading, inputId, inputPlaceholder, tex
                             <textarea
                                 id={textareaId}
                                 placeholder={textareaPlaceholder}
+                                onChange={handleChange}
+                                value={newMealRecipe}
                             />
                         </label>
                     </div>

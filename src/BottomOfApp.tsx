@@ -6,7 +6,6 @@ export default function BottomOfApp () {
 
     const days: string[] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
     const [positionX, setPositionX] = useState(0);
-    const gap = 10;
 
     function goToNextDay() {
         setPositionX((prev: number) => (prev + 100) % (days.length * 100));
@@ -19,23 +18,25 @@ export default function BottomOfApp () {
         );
     }
 
-    const transformationStyle = `translateX(calc(-${positionX}% - ${Math.floor(positionX / 100) * gap}px))`;
+    const transformationStyle = `translateX(-${positionX}%)`;
     
 
     return (
         <div id={styles.bottomOfAppBackground}>
-            <div id={styles.dayContainer}>
-                <div 
-                    id={styles.dayCarousel} 
-                    style={{transform: transformationStyle}}>
-                        {days.map((day, index) => (
-                            <Day 
-                                day={day} 
-                                key={index}
-                                goToNextDay={goToNextDay}
-                                goToPreviousDay={goToPreviousDay}
-                            />
-                        ))}
+            <div id={styles.dayBackground}>
+                <div id={styles.dayContainer}>
+                    <div 
+                        id={styles.dayCarousel} 
+                        style={{transform: transformationStyle}}>
+                            {days.map((day, index) => (
+                                <Day 
+                                    day={day} 
+                                    key={index}
+                                    goToNextDay={goToNextDay}
+                                    goToPreviousDay={goToPreviousDay}
+                                />
+                            ))}
+                    </div>
                 </div>
             </div>
         </div>
