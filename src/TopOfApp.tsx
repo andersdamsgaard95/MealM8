@@ -2,7 +2,6 @@ import { useState } from 'react'
 import styles from './TopOfApp.module.css'
 import NewRecipeForm from './NewRecipeForm';
 import SavedRecipes from './SavedRecipes';
-import LifeForm from './LifeForm';
 
 export default function TopOfApp () {
 

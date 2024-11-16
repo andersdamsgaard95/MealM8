@@ -1,1 +1,9 @@
-/*# sourceMappingURL=App.module.css.map */
+#app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+#app .bottomOfApp {
+  flex-grow: 1;
+  min-height: 0;
+}/*# sourceMappingURL=App.module.css.map */

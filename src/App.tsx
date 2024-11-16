@@ -1,12 +1,18 @@
 //import { useState } from 'react'
-import './App.module.css'
+import styles from './App.module.css'
 import TopOfApp from './TopOfApp'
+import BottomOfApp from './BottomOfApp'
 
 export default function App() {
   
   return (
-    <>
-      <TopOfApp />
-    </>
+    <div id={styles.app}>
+      <div className={styles.topOfApp}>
+        <TopOfApp />
+      </div>
+      <div className={styles.bottomOfApp}>
+        <BottomOfApp />
+      </div>
+    </div>
   )
 }

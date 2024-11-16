@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import styles from './NewRecipeForm.module.css'
+import styles from './NewRecipeForm.module.css';
 
 interface NewRecipeFormProps {
     heading: string,
@@ -62,7 +62,7 @@ export default function NewRecipeForm ({ heading, inputId, inputPlaceholder, tex
                         <div onClick={toggleAccordion} className={styles.colorCodeHeading}>
                             <div className={styles.colorCode}></div>
                             <h2 className={styles.heading}>saved activities</h2>
-                            <img className={accordion === false ? styles.flippedArrow : ''} src="arrow.svg" alt="arrow" />
+                            <img className={accordion === true ? styles.flippedArrow : ''} src="arrow.svg" alt="arrow" />
                         </div>
                         <div className={`${styles.savedActivitiesAccordionHidden} ${accordion === false ? styles.hidden : accordion === true ? styles.visible : ''}`}>
                             <label htmlFor="activitySearch">

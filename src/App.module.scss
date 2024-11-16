@@ -1,0 +1,10 @@
+#app {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+        .bottomOfApp {
+            flex-grow: 1;
+            min-height: 0;
+        }
+}
