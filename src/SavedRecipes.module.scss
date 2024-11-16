@@ -50,7 +50,21 @@
                             background-color: white;
                             border-radius: 5px;
                             border: 1px solid #737272;
-                            padding: 10px;
+                            padding: 10px 30px 10px 30px;
+                            display: flex;
+                            flex-direction: column;
+                            gap: 15px;
+
+                                li {
+                                    display: flex;
+                                    align-items: center;
+                                    gap: 50px;
+                                    cursor: pointer;
+
+                                        img {
+                                            height: 1.5em;
+                                        }
+                                }
                         }
                 }
 
@@ -64,4 +78,91 @@
                     transform: scaleY(1);
                 }
         }
+
+        .savedMealDetails {
+            position: fixed;
+            top: 25px;
+            bottom: 25px;
+            left: 25px;
+            right: 25px;
+            background-color: #D9D9D9;
+            padding: 10px;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            z-index: 1;
+
+                .recipeName {
+                    font-size: 1.5em;
+                }
+
+                .recipeContainer {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+
+                        .recipeHeading {
+                            font-size: 1.2em;
+                        }
+                        pre {
+                            background-color: white;
+                            padding: 10px;
+                            border-radius: 5px;
+                        }
+                }
+
+                #ratingContainer {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 25px;
+
+                        .healthRating {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 10px;
+
+                                input {
+                                    max-width: 50px;
+                                    height: 50px;
+                                }
+                        }
+                        .priceRating {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 10px;
+
+                                input {
+                                    max-width: 100px;
+                                    height: 50px;
+                                }
+                        }
+                }
+
+                .doneMealDetails {
+                    width: 100%;
+                    padding: 20px;
+                    background-color: green;
+                    text-align: center;
+                    border-radius: 5px;
+                    cursor: pointer;
+
+                        p {
+                            font-size: 1.2em;
+                        }
+                }
+
+                .exitMealDetails {
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;
+                    background-color: red;
+                    cursor: pointer;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    transform: translate(25%, -25%);
+                }
+        }
+
 }

@@ -88,6 +88,7 @@ export default function TopOfApp () {
                 activeButton === 'savedRecipes' ? 
                     <SavedRecipes
                         savedMeals={savedMeals}
+                        setSavedMeals={setSavedMeals}
                     /> :
                 activeButton === 'life' ? 
                     <NewRecipeForm
