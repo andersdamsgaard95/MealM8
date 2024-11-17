@@ -14,8 +14,9 @@ export default function SavedRecipes ({ savedMeals, setSavedMeals }: { savedMeal
     const [searchText, setSearchText] = useState('');
 
     function showMealDetails(mealIndex: number) {
+        const actualIndex = savedMeals.findIndex((meal) => meal === filteredMeals[mealIndex]);
         setMealDetailsAreShown(true);
-        setClickedMealIndex(mealIndex);
+        setClickedMealIndex(actualIndex);
         setHealthRating(savedMeals[mealIndex].healthRating ?? null);
         setPriceRating(savedMeals[mealIndex].priceRating ?? null);
     }
