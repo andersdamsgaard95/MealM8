@@ -6,6 +6,8 @@ import SavedRecipes from './SavedRecipes';
 export interface SavedMeal {
     mealName: string;
     mealRecipe: string;
+    healthRating?: number | null;
+    priceRating?: number | null;
 }
 
 export default function TopOfApp () {

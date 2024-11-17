@@ -58,7 +58,7 @@
                                 li {
                                     display: flex;
                                     align-items: center;
-                                    gap: 50px;
+                                    justify-content: space-between;
                                     cursor: pointer;
 
                                         img {
@@ -105,10 +105,22 @@
                         .recipeHeading {
                             font-size: 1.2em;
                         }
-                        pre {
+                        .recipeField {
                             background-color: white;
                             padding: 10px;
                             border-radius: 5px;
+                            position: relative;
+
+                                button {
+                                    position: absolute;
+                                    top: 0;
+                                    right: 0;
+                                }
+                        }
+                        .editingTextArea {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 5px;
                         }
                 }
 
@@ -137,18 +149,17 @@
                                     height: 50px;
                                 }
                         }
-                }
-
-                .doneMealDetails {
-                    width: 100%;
-                    padding: 20px;
-                    background-color: green;
-                    text-align: center;
-                    border-radius: 5px;
-                    cursor: pointer;
-
-                        p {
-                            font-size: 1.2em;
+                        .doneMealDetails {
+                            width: 100%;
+                            padding: 20px;
+                            background-color: green;
+                            text-align: center;
+                            border-radius: 5px;
+                            cursor: pointer;
+        
+                                p {
+                                    font-size: 1.2em;
+                                }
                         }
                 }
 

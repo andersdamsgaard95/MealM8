@@ -68,7 +68,7 @@
 #savedRecipesSection .accordion .visibleAccordion ol li {
   display: flex;
   align-items: center;
-  gap: 50px;
+  justify-content: space-between;
   cursor: pointer;
 }
 #savedRecipesSection .accordion .visibleAccordion ol li img {
@@ -107,10 +107,21 @@
 #savedRecipesSection .savedMealDetails .recipeContainer .recipeHeading {
   font-size: 1.2em;
 }
-#savedRecipesSection .savedMealDetails .recipeContainer pre {
+#savedRecipesSection .savedMealDetails .recipeContainer .recipeField {
   background-color: white;
   padding: 10px;
   border-radius: 5px;
+  position: relative;
+}
+#savedRecipesSection .savedMealDetails .recipeContainer .recipeField button {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+#savedRecipesSection .savedMealDetails .recipeContainer .editingTextArea {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 #savedRecipesSection .savedMealDetails #ratingContainer {
   display: flex;
@@ -135,7 +146,7 @@
   max-width: 100px;
   height: 50px;
 }
-#savedRecipesSection .savedMealDetails .doneMealDetails {
+#savedRecipesSection .savedMealDetails #ratingContainer .doneMealDetails {
   width: 100%;
   padding: 20px;
   background-color: green;
@@ -143,7 +154,7 @@
   border-radius: 5px;
   cursor: pointer;
 }
-#savedRecipesSection .savedMealDetails .doneMealDetails p {
+#savedRecipesSection .savedMealDetails #ratingContainer .doneMealDetails p {
   font-size: 1.2em;
 }
 #savedRecipesSection .savedMealDetails .exitMealDetails {

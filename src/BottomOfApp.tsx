@@ -4,39 +4,37 @@ import Day from './Day';
 
 export default function BottomOfApp () {
 
-    const days: string[] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-    const [positionX, setPositionX] = useState(0);
+    //const days: string[] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+    const [currentDayIndex, setCurrentDayIndex] = useState<number>(1);
 
     function goToNextDay() {
-        setPositionX((prev: number) => (prev + 100) % (days.length * 100));
+        if (currentDayIndex === 7) {
+            setCurrentDayIndex(1);
+        } else {
+            setCurrentDayIndex((prev) => prev + 1);
+        }
     }
     function goToPreviousDay() {
-        setPositionX((prev: number) => 
-            prev === 0 
-                ? (days.length - 1) * 100 // Wrap to the last day
-                : prev - 100
-        );
+        if (currentDayIndex === 1) {
+            setCurrentDayIndex(7);
+        } else {
+            setCurrentDayIndex((prev) => prev - 1);
+        }
     }
-
-    const transformationStyle = `translateX(-${positionX}%)`;
-    
 
     return (
         <div id={styles.bottomOfAppBackground}>
             <div id={styles.dayBackground}>
                 <div id={styles.dayContainer}>
-                    <div 
-                        id={styles.dayCarousel} 
-                        style={{transform: transformationStyle}}>
-                            {days.map((day, index) => (
-                                <Day 
-                                    day={day} 
-                                    key={index}
-                                    goToNextDay={goToNextDay}
-                                    goToPreviousDay={goToPreviousDay}
-                                />
-                            ))}
-                    </div>
+                    {
+                        currentDayIndex === 1 ? <Day day={'Monday'} goToNextDay={goToNextDay} goToPreviousDay={goToPreviousDay} /> :
+                        currentDayIndex === 2 ? <Day day={'Tuesday'} goToNextDay={goToNextDay} goToPreviousDay={goToPreviousDay} /> :
+                        currentDayIndex === 3 ? <Day day={'Wednesday'} goToNextDay={goToNextDay} goToPreviousDay={goToPreviousDay} /> :
+                        currentDayIndex === 4 ? <Day day={'Thursday'} goToNextDay={goToNextDay} goToPreviousDay={goToPreviousDay} /> :
+                        currentDayIndex === 5 ? <Day day={'Friday'} goToNextDay={goToNextDay} goToPreviousDay={goToPreviousDay} /> :
+                        currentDayIndex === 6 ? <Day day={'Saturday'} goToNextDay={goToNextDay} goToPreviousDay={goToPreviousDay} /> :
+                        currentDayIndex === 7 ? <Day day={'Sunday'} goToNextDay={goToNextDay} goToPreviousDay={goToPreviousDay} /> : null
+                    }
                 </div>
             </div>
         </div>

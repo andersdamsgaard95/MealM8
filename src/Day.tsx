@@ -20,8 +20,7 @@ export default function Day ({ day, goToNextDay, goToPreviousDay }:dayComponentP
         <section id={styles.day}>
             {/* CALENDER */}
             <div className={styles.calender}>
-                <p>Your calender is empty...
-                </p>
+                <p>Your calender is empty...</p>
                 {/* RENDER CALENDER HERE */}
             </div>
 

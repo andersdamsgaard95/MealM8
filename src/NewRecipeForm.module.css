@@ -1,15 +1,15 @@
-form {
+#newRecipeForm {
   background-color: #C1F1F7;
   padding: 10px;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
-form #formHeadingPlusInputs {
+#newRecipeForm #formHeadingPlusInputs {
   border: solid 1px #3E7EFF;
   border-radius: 5px;
 }
-form #formHeadingPlusInputs .colorCodeHeading {
+#newRecipeForm #formHeadingPlusInputs .colorCodeHeading {
   border: solid 1px black;
   background-color: white;
   height: 2em;
@@ -18,17 +18,17 @@ form #formHeadingPlusInputs .colorCodeHeading {
   align-items: center;
   gap: 10px;
 }
-form #formHeadingPlusInputs .colorCodeHeading .colorCode {
+#newRecipeForm #formHeadingPlusInputs .colorCodeHeading .colorCode {
   height: 100%;
   width: 25px;
   background-color: #9CDAA0;
   border-radius: 5px 0 0 5px;
 }
-form #formHeadingPlusInputs .colorCodeHeading .heading {
+#newRecipeForm #formHeadingPlusInputs .colorCodeHeading .heading {
   font-size: 1em;
   width: 100%;
 }
-form #formHeadingPlusInputs .colorCodeHeadingLife {
+#newRecipeForm #formHeadingPlusInputs .colorCodeHeadingLife {
   border: solid 1px black;
   background-color: white;
   height: 2em;
@@ -37,17 +37,17 @@ form #formHeadingPlusInputs .colorCodeHeadingLife {
   align-items: center;
   gap: 10px;
 }
-form #formHeadingPlusInputs .colorCodeHeadingLife .colorCode {
+#newRecipeForm #formHeadingPlusInputs .colorCodeHeadingLife .colorCode {
   height: 100%;
   width: 25px;
   background-color: black;
   border-radius: 5px 0 0 5px;
 }
-form #formHeadingPlusInputs .colorCodeHeadingLife .heading {
+#newRecipeForm #formHeadingPlusInputs .colorCodeHeadingLife .heading {
   font-size: 1em;
   width: 100%;
 }
-form #formHeadingPlusInputs #formInputs {
+#newRecipeForm #formHeadingPlusInputs #formInputs {
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -55,20 +55,20 @@ form #formHeadingPlusInputs #formInputs {
   background-color: #DFF1F4;
   border-radius: 5px;
 }
-form #formHeadingPlusInputs #formInputs input {
+#newRecipeForm #formHeadingPlusInputs #formInputs input {
   background-color: white;
   width: 100%;
   padding: 10px;
   border: 1px solid #737272;
   border-radius: 5px;
 }
-form #formHeadingPlusInputs #formInputs textarea {
+#newRecipeForm #formHeadingPlusInputs #formInputs textarea {
   width: 100%;
   padding: 10px;
   border: 1px solid #737272;
   border-radius: 5px;
 }
-form button {
+#newRecipeForm button {
   width: 100%;
   cursor: pointer;
   text-align: center;
@@ -78,7 +78,7 @@ form button {
   border-radius: 5px;
   position: relative;
 }
-form button img {
+#newRecipeForm button img {
   position: absolute;
   height: 3em;
   right: 10px;
