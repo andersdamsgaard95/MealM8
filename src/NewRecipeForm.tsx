@@ -10,7 +10,7 @@ interface NewRecipeFormProps {
     textareaPlaceholder: string,
     buttonText: string,
     activeButton?: string,
-    setSavedList: React.Dispatch<React.SetStateAction<SavedMeal[]>>;
+    setSavedList?: React.Dispatch<React.SetStateAction<SavedMeal[]>>;
 }
 
 export default function NewRecipeForm ({ heading, inputId, inputPlaceholder, textareaId, textareaPlaceholder, buttonText, activeButton, setSavedList }: NewRecipeFormProps) {
