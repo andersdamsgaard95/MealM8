@@ -15,16 +15,38 @@ export interface SavedActivity {
     activityDescription: string,
 }
 
-export default function TopOfApp () {
+interface TopOfAppProps {
+    savedMeals: SavedMeal[],
+    setSavedMeals: React.Dispatch<React.SetStateAction<SavedMeal[]>>,
+    newMealName: string,
+    setNewMealName: React.Dispatch<React.SetStateAction<string>>,
+    newMealRecipe: string,
+    setNewMealRecipe: React.Dispatch<React.SetStateAction<string>>,
+    savedActivitiesList: SavedActivity[],
+    setSavedActivitiesList: React.Dispatch<React.SetStateAction<SavedActivity[]>>,
+    newActivityName: string,
+    setNewActivityName: React.Dispatch<React.SetStateAction<string>>,
+    newActivityDescription: string,
+    setNewActivityDescription: React.Dispatch<React.SetStateAction<string>>
+}
+
+export default function TopOfApp ({
+    savedMeals,
+    setSavedMeals,
+    newMealName,
+    setNewMealName,
+    newMealRecipe,
+    setNewMealRecipe,
+    savedActivitiesList,
+    setSavedActivitiesList,
+    newActivityName,
+    setNewActivityName,
+    newActivityDescription,
+    setNewActivityDescription
+}: TopOfAppProps) {
 
     //  STATE VARIABLES
     const [activeButton, setActiveButton] = useState<string | null>(null);
-    const [savedMeals, setSavedMeals] = useState<SavedMeal[]>([]);
-    const [newMealName, setNewMealName] = useState('');
-    const [newMealRecipe, setNewMealRecipe] = useState('');
-    const [newActivityName, setNewActivityName] = useState('');
-    const [newActivityDescription, setNewActivityDescription] = useState('');
-    const [savedActivitiesList, setSavedActivitiesList] = useState<SavedActivity[]>([]);
 
     /**
      * Decides which button is active

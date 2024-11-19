@@ -10,7 +10,6 @@
 
                 .colorCodeHeading {
                     @include colorCodeHeading($width: 28.5px);
-                    cursor: pointer;
                     
                     img {
                         height: 2em;

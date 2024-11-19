@@ -1,6 +1,7 @@
 //  FARVER
 $globalNavColor: #B7E4E9;
 $activeNavColor: #C1F1F7;
+$boxShadow: 0 4px 6px rgba(0, 0, 0, 0.5);
 
 //  MIXINS
 @mixin colorCodeHeading ($width: 25px, $color: #9CDAA0) {
@@ -30,4 +31,18 @@ $activeNavColor: #C1F1F7;
     padding: 0;
     overflow: hidden;
     transition: max-height 0.3s ease;
+}
+
+@mixin fixedListBox() {
+    position: fixed;
+    top: 50%;
+    left: 25px;
+    right: 25px;
+    transform: translateY(-50%);
+    //background-color: $color;
+    border-radius: 5px;
+    border: 2px solid black;
+    max-height: 100vh;
+    min-height: 250px;
+    padding: 20px;
 }

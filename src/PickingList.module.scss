@@ -1,0 +1,91 @@
+@import 'partial';
+
+//  FIXED LIST BOX
+.fixedListBox {
+    @include fixedListBox;
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+                .fieldsContainer {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    border-radius: 5px;
+                    border: 1px solid #3E7EFF;
+                    background-color: #DFF1F4;
+
+                        .colorCodeHeading {
+                            display: flex;
+                            align-items: center;
+                            gap: 10px;
+                            background-color: white;
+                            border-radius: 5px;
+                            height: 35px;
+                            border: 1px solid black;
+
+                                .colorCode {
+                                    width: 25px;
+                                    height: 100%;
+                                    border-radius: 5px 0 0 5px;
+                                    //background-color: #9CDAA0;
+                                }
+                        }
+
+                        .searchDiv {
+                            margin-left: 10px;
+
+                                input {
+                                    padding: 10px;
+                                    border-radius: 5px;
+                                    border: 1px solid black;
+
+                                }
+                        }
+
+                        .listContainer {
+                            background-color: white;
+                            border-radius: 5px;
+                            border: 1px solid #737272;
+                            padding: 10px 30px 10px 30px;
+                            display: flex;
+                            flex-direction: column;
+                            gap: 15px;
+                            margin-left: 10px;
+                            margin-right: 10px;
+                            margin-bottom: 10px;
+    
+                                li {
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: space-between;
+                                    cursor: pointer;
+    
+                                        img {
+                                            height: 1.5em;
+                                        }
+                                    }
+                        }
+                }
+        }
+        .exitButton {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            background-color: #FF0000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+
+                img {
+                    height: 2em;
+                }
+        }
+}

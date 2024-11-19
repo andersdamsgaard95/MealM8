@@ -12,6 +12,80 @@
   flex-grow: 1;
   overflow-y: auto;
 }
+#day .calender .calenderFlex {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+}
+#day .calender .calenderFlex .calenderItem {
+  height: 50px;
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  background-color: #DFF1F4;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+#day .calender .calenderFlex .calenderItem .colorCode {
+  width: 25px;
+  height: 100%;
+  border-radius: 5px 0 0 5px;
+  flex-shrink: 0;
+}
+#day .calender .calenderFlex .calenderItem .editingTimeInputs {
+  display: flex;
+  gap: 0px;
+}
+#day .calender .calenderFlex .calenderItem .editingTimeInputs .timeInputs {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  height: calc(100% - 10px);
+  width: auto;
+  padding: 0;
+}
+#day .calender .calenderFlex .calenderItem .editingTimeInputs .timeInputs .timeInput {
+  width: 100px;
+  cursor: text;
+}
+#day .calender .calenderFlex .calenderItem .editingTimeInputs .saveTime {
+  height: 100%;
+  cursor: pointer;
+}
+#day .calender .calenderFlex .calenderItem .addTimeButton {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 5px 0 5px 0;
+  padding: 1px;
+  white-space: nowrap;
+  border: 1px solid black;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+}
+#day .calender .calenderFlex .calenderItem .calenderItemNote {
+  background-color: white;
+  cursor: text;
+  height: calc(100% - 10px);
+  margin: 5px 0;
+  border-radius: 5px;
+  border: 1px solid black;
+  padding: 5px;
+  box-sizing: border-box;
+}
+#day .calender .calenderFlex .calenderItem .eventButtons {
+  display: flex;
+  justify-content: end;
+  width: 100%;
+  gap: 5px;
+  padding: 5px 5px 5px 0;
+}
+#day .calender .calenderFlex .calenderItem .eventButtons img {
+  height: 100%;
+  cursor: pointer;
+}
 #day .addEventButtons {
   display: grid;
   grid-template-rows: auto auto;
