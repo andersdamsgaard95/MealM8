@@ -10,12 +10,21 @@ export interface SavedMeal {
     priceRating?: number | null;
 }
 
+export interface SavedActivity {
+    activityName: string,
+    activityDescription: string,
+}
+
 export default function TopOfApp () {
 
     //  STATE VARIABLES
     const [activeButton, setActiveButton] = useState<string | null>(null);
     const [savedMeals, setSavedMeals] = useState<SavedMeal[]>([]);
-    const [savedActivities, setSavedActivities] = useState([]);
+    const [newMealName, setNewMealName] = useState('');
+    const [newMealRecipe, setNewMealRecipe] = useState('');
+    const [newActivityName, setNewActivityName] = useState('');
+    const [newActivityDescription, setNewActivityDescription] = useState('');
+    const [savedActivitiesList, setSavedActivitiesList] = useState<SavedActivity[]>([]);
 
     /**
      * Decides which button is active
@@ -84,8 +93,15 @@ export default function TopOfApp () {
                         inputPlaceholder={'Giv dit måltid et navn! ...Lasagne?'}
                         textareaId={'mealRecipe'}
                         textareaPlaceholder={'- 1x egg plant?... - 200g ost?...'}
+                        inputValue={newMealName}
+                        textareaValue={newMealRecipe}
                         buttonText={'Save this recipe'}
                         setSavedList={setSavedMeals}
+                        newMealName={newMealName}
+                        setNewMealName={setNewMealName}
+                        newMealRecipe={newMealRecipe}
+                        setNewMealRecipe={setNewMealRecipe}
+                        activeForm={'recipe'}
                     /> :
                 activeButton === 'savedRecipes' ? 
                     <SavedRecipes
@@ -97,10 +113,19 @@ export default function TopOfApp () {
                         heading={'New activity'}
                         inputId={'activityName'}
                         inputPlaceholder={'Whats the activity? ...Work? Surf?'}
-                        textareaId={'activityNote'}
+                        textareaId={'activityDescription'}
                         textareaPlaceholder={'Details? ...Low tide is 05.20am?'}
+                        inputValue={newActivityName}
+                        textareaValue={newActivityDescription}
                         buttonText={'Save this activity'}
                         activeButton={activeButton}
+                        activeForm={'life'}
+                        newActivityName={newActivityName}
+                        setNewActivityName={setNewActivityName}
+                        newActivityDescription={newActivityDescription}
+                        setNewActivityDescription={setNewActivityDescription}
+                        savedActivitiesList={savedActivitiesList}
+                        setSavedActivitiesList={setSavedActivitiesList}
                     /> : 
                     null
             }

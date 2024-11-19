@@ -44,6 +44,9 @@
                                     border: 1px solid #737272;
                                     padding: 10px;
                                 }
+                                input {
+                                    width: 100%;
+                                }
                         }
 
                         ol {
@@ -79,101 +82,168 @@
                 }
         }
 
-        .savedMealDetails {
+        .mealDetailsBackground {
             position: fixed;
-            top: 25px;
-            bottom: 25px;
-            left: 25px;
-            right: 25px;
-            background-color: #D9D9D9;
-            padding: 10px;
-            border-radius: 5px;
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
             z-index: 1;
 
-                .recipeName {
-                    font-size: 1.5em;
-                }
-
-                .recipeContainer {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 10px;
-
-                        .recipeHeading {
-                            font-size: 1.2em;
-                        }
-                        .recipeField {
-                            background-color: white;
-                            padding: 10px;
-                            border-radius: 5px;
-                            position: relative;
-
-                                button {
-                                    position: absolute;
-                                    top: 0;
-                                    right: 0;
-                                }
-                        }
-                        .editingTextArea {
-                            display: flex;
-                            flex-direction: column;
-                            gap: 5px;
-                        }
-                }
-
-                #ratingContainer {
+                .savedMealDetails {
+                    position: fixed;
+                    top: 50%;
+                    left: 25px;
+                    right: 25px;
+                    max-height: 100vh;
+                    transform: translateY(-50%);
+                    background-color: #9CDAA0;
+                    padding: 25px;
+                    border-radius: 5px;
+                    border: 2px solid black;
                     display: flex;
                     flex-direction: column;
                     gap: 25px;
-
-                        .healthRating {
-                            display: flex;
-                            flex-direction: column;
-                            gap: 10px;
-
-                                input {
-                                    max-width: 50px;
-                                    height: 50px;
-                                }
-                        }
-                        .priceRating {
-                            display: flex;
-                            flex-direction: column;
-                            gap: 10px;
-
-                                input {
-                                    max-width: 100px;
-                                    height: 50px;
-                                }
-                        }
-                        .doneMealDetails {
-                            width: 100%;
-                            padding: 20px;
-                            background-color: green;
-                            text-align: center;
-                            border-radius: 5px;
-                            cursor: pointer;
+                    z-index: 10;
+    
         
-                                p {
+                        .recipeContainer {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 10px;
+        
+                                .notEditingMeal {
+                                    display: flex;
+                                    flex-direction: column;
+                                    gap: 25px;
+
+                                        .recipeName {
+                                            font-size: 1.5em;
+                                        }
+
+                                        pre {
+                                            min-height: 0;
+                                            max-height: 150px;
+                                            padding: 10px;
+                                            overflow: auto;
+                                            background-color: #A7F0AC;
+                                            border-radius: 5px;
+                                        }
+        
+                                        .buttonsContainer {
+                                            display: flex;
+                                            gap: 10px;
+        
+                                                .editMealButton {
+                                                    background-color: #53DBF6;
+                                                    border: 1px solid black;
+                                                    border-radius: 5px;
+                                                    padding: 10px 0 10px 0;
+                                                    flex-grow: 2;
+                                                    cursor: pointer;
+                                                }
+                                                .deleteMealButton {
+                                                    background-color: #FF0000;
+                                                    border: 1px solid black;
+                                                    border-radius: 5px;
+                                                    padding: 10px 0 10px 0;
+                                                    flex-grow: 1;
+                                                    cursor: pointer;
+                                                }
+                                        }
+                                }
+        
+                                .recipeHeading {
                                     font-size: 1.2em;
                                 }
+                                .editingTextArea {
+                                    display: flex;
+                                    flex-direction: column;
+                                    gap: 25px;
+        
+                                        input, textarea {
+                                            padding: 10px;
+                                            border-radius: 5px;
+                                            border: solid 1px black;
+                                        }
+                                        button {
+                                            background-color: #53DBF6;
+                                            border: 1px solid black;
+                                            border-radius: 5px;
+                                            padding: 10px 0 10px 0;
+                                            cursor: pointer;
+                                        }
+                                }
+                        }
+        
+                        #ratingContainer {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 25px;
+        
+                                .ratingFields {
+                                    display: flex;
+                                    justify-content: space-between;
+                                    gap: 25px;
+        
+                                    .healthRating {
+                                        flex: 1;
+                                        display: flex;
+                                        flex-direction: column;
+                                        gap: 10px;
+            
+                                            input {
+                                                width: 100%;
+                                                padding: 10px;
+                                                border-radius: 5px;
+                                                border: 1px solid black;
+                                            }
+                                    }
+                                    .priceRating {
+                                        flex: 1;
+                                        display: flex;
+                                        flex-direction: column;
+                                        gap: 10px;
+            
+                                            input {
+                                                width: 100%;
+                                                padding: 10px;
+                                                border-radius: 5px;
+                                                border: 1px solid black;
+                                            }
+                                    }
+                                }
+        
+                                .doneMealDetails {
+                                    width: 100%;
+                                    padding: 20px;
+                                    background-color: #7EF653;
+                                    text-align: center;
+                                    border-radius: 5px;
+                                    border: 1px solid black;
+                                    cursor: pointer;
+                                }
+                        }
+
+                        .exitMealDetails {
+                            z-index: 99999;
+                            top: 0;
+                            left: 0;
+                            width: 30px;
+                            height: 30px;
+                            border-radius: 50%;
+                            background-color: #FF0000;
+                            transform: translate(-50%, -50%);
+                            cursor: pointer;
+                            position: absolute;
+
+                                img {
+                                    height: 100%;
+                                    width: 100%;
+                                }
                         }
                 }
-
-                .exitMealDetails {
-                    width: 50px;
-                    height: 50px;
-                    border-radius: 50%;
-                    background-color: red;
-                    cursor: pointer;
-                    position: absolute;
-                    top: 0;
-                    right: 0;
-                    transform: translate(25%, -25%);
-                }
+            
         }
 
 }

@@ -11,6 +11,7 @@ export default function SavedRecipes ({ savedMeals, setSavedMeals }: { savedMeal
     const [sortBy, setSortBy] = useState<string>('');
     const [isEditing, setIsEditing] = useState(false);
     const [editingMealRecipe, setEditingMealRecipe] = useState<string>('');
+    const [editingMealName, setEditingMealName] = useState<string>('');
     const [searchText, setSearchText] = useState('');
 
     function showMealDetails(mealIndex: number) {
@@ -80,28 +81,45 @@ export default function SavedRecipes ({ savedMeals, setSavedMeals }: { savedMeal
 
         setSavedMeals(sortedMeals); // Set the sorted meals
     }
-    function handleRecipeEdit(oldRecipeText: string) {
+    function handleRecipeEdit(oldRecipeText: string, oldMealName: string) {
         setIsEditing(true);
+        setEditingMealName(oldMealName);
         setEditingMealRecipe(oldRecipeText);
     }
-    function handleEditChange (e: React.ChangeEvent<HTMLTextAreaElement>) {
+    function handleEditChange (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) {
         const { id, value } = e.target;
 
         switch (id) {
             case 'editingMealRecipe':
                 setEditingMealRecipe(value);
                 break;
+            case 'editingMealName':
+                setEditingMealName(value);
+                break;
         }
     }
     function saveRecipeEdit(editingMealIndex:number) {
         setSavedMeals((prev:SavedMeal[]) => (
             prev.map((meal, index) => (
-                index === editingMealIndex ? {...meal, mealRecipe: editingMealRecipe}
+                index === editingMealIndex ? {...meal, mealName: editingMealName, mealRecipe: editingMealRecipe}
                 : meal
             ))
         ))
         
         setIsEditing(false);
+    }
+
+    function deleteRecipe(mealToDeleteIndex:number) {
+        const deleteIsConfirmed = window.confirm('Are you sure you want to delete this meal?');
+
+        if (deleteIsConfirmed) {
+            setMealDetailsAreShown(false);
+            setSavedMeals((prev) => (
+                prev.filter((_, index) => (
+                    index !== mealToDeleteIndex 
+                ))
+            ))
+        }
     }
 
     const filteredMeals = savedMeals.filter((meal) => 
@@ -157,58 +175,71 @@ export default function SavedRecipes ({ savedMeals, setSavedMeals }: { savedMeal
             {/* MEAL DETAILS ON CLICK */}
             {
                 mealDetailsAreShown && (
-                    <div className={styles.savedMealDetails}>
-                        <p className={styles.recipeName}>{savedMeals[clickedMealIndex].mealName}</p>
-                        <div className={styles.recipeContainer}>
-                            <p className={styles.recipeHeading}>Recipe:</p>
-                            {
-                                isEditing ? (
-                                    <div className={styles.editingTextArea}>
-                                        <textarea 
-                                            id='editingMealRecipe'
-                                            value={editingMealRecipe}
-                                            onChange={handleEditChange}
-                                        >
+                    <div className={styles.mealDetailsBackground}>
+                        <div className={styles.savedMealDetails}>
+                            <div className={styles.recipeContainer}>
+                                {
+                                    isEditing ? (
+                                        <div className={styles.editingTextArea}>
+                                            <input 
+                                                type="text"
+                                                id='editingMealName'
+                                                value={editingMealName}
+                                                onChange={handleEditChange}
+                                            />
+                                            <textarea 
+                                                id='editingMealRecipe'
+                                                value={editingMealRecipe}
+                                                onChange={handleEditChange}
+                                            >
                                                 {editingMealRecipe}
-                                        </textarea>
-                                        <button onClick={() => saveRecipeEdit(clickedMealIndex)}>Save edit</button>
-                                    </div>
-                                ) : (
-                                    <div className={styles.recipeField}>
-                                        <pre>{savedMeals[clickedMealIndex].mealRecipe}</pre>
-                                        <button onClick={() => handleRecipeEdit(savedMeals[clickedMealIndex].mealRecipe)}>Edit</button>
-                                    </div>
-                                )
-                            }
+                                            </textarea>
+                                            <button onClick={() => saveRecipeEdit(clickedMealIndex)}>Save edit</button>
+                                        </div>
+                                    ) : (
+                                        <div className={styles.notEditingMeal}>
+                                            <p className={styles.recipeName}>{savedMeals[clickedMealIndex].mealName}</p>
+                                            <pre>{savedMeals[clickedMealIndex].mealRecipe}</pre>
+                                            <div className={styles.buttonsContainer}>
+                                                <button className={styles.editMealButton} onClick={() => handleRecipeEdit(savedMeals[clickedMealIndex].mealRecipe, savedMeals[clickedMealIndex].mealName)}>Edit meal</button>
+                                                <button className={styles.deleteMealButton} onClick={() => deleteRecipe(clickedMealIndex)}>Delete</button>
+                                            </div>
+                                        </div>
+                                    )
+                                }
+                            </div>
+                            <form id={styles.ratingContainer} onSubmit={(e) => handleRatingSubmit(e, clickedMealIndex)}>
+                                <div className={styles.ratingFields}>
+                                    <label className={styles.healthRating} htmlFor="healthRating">
+                                        Health rating (1-10)
+                                        <input 
+                                            type="number" 
+                                            name="healthRating" 
+                                            id="healthRating" 
+                                            min={1} max={10}
+                                            onChange={handleRatingChange}
+                                            value={healthRating ?? ''}
+                                        />
+                                    </label>
+                                    <label className={styles.priceRating} htmlFor="priceRating">
+                                        Cost price (aprox)
+                                        <input 
+                                            type="number" 
+                                            name="priceRating" 
+                                            id="priceRating"
+                                            onChange={handleRatingChange}
+                                            value={priceRating ?? ''}
+                                        />
+                                    </label>
+                                </div>
+                                <button type='submit' className={styles.doneMealDetails}>
+                                    <p>Save health rating and cost price</p>
+                                </button>
+                            </form>
+                            <div className={styles.exitMealDetails} onClick={exitMealDetails}>
+                                <img src="x.svg" alt="exit meal details" />
+                            </div>
                         </div>
-                        <form id={styles.ratingContainer} onSubmit={(e) => handleRatingSubmit(e, clickedMealIndex)}>
-                            <label className={styles.healthRating} htmlFor="healthRating">
-                                How healthy is this meal? (1-10)
-                                <input 
-                                    type="number" 
-                                    name="healthRating" 
-                                    id="healthRating" 
-                                    min={1} max={10}
-                                    onChange={handleRatingChange}
-                                    value={healthRating ?? ''}
-                                />
-                            </label>
-                            <label className={styles.priceRating} htmlFor="priceRating">
-                                How expensive is this meal in your own curency?
-                                <input 
-                                    type="number" 
-                                    name="priceRating" 
-                                    id="priceRating"
-                                    onChange={handleRatingChange}
-                                    value={priceRating ?? ''}
-                                />
-                            </label>
-                            <button type='submit' className={styles.doneMealDetails}>
-                                <p>Done</p>
-                            </button>
-                        </form>
-
-                        <div className={styles.exitMealDetails} onClick={exitMealDetails}></div>
                     </div>
                 )
             }

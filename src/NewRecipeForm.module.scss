@@ -108,6 +108,26 @@
                             border: 1px solid #737272;
                             background-color: white;
                         }
+                        ol {
+                            background-color: white;
+                            border-radius: 5px;
+                            border: 1px solid #737272;
+                            padding: 10px 30px 10px 30px;
+                            display: flex;
+                            flex-direction: column;
+                            gap: 15px;
+
+                                li {
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: space-between;
+                                    cursor: pointer;
+
+                                        img {
+                                            height: 1.5em;
+                                        }
+                                }
+                        }
                         &.hidden {
                             transform: scaleY(0);
                             padding: 0;
@@ -119,4 +139,104 @@
                 }
                 
         }
+}
+
+.savedActivityDetails {
+    position: fixed;
+    top: 50%;
+    left: 25px;
+    right: 25px;
+    max-height: 100vh;
+    transform: translateY(-50%);
+    background-color: #9CDAA0;
+    padding: 25px;
+    border-radius: 5px;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    z-index: 10;
+
+    .activityContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+            .notEditingActivity {
+                display: flex;
+                flex-direction: column;
+                gap: 25px;
+
+                    .activityName {
+                        font-size: 1.5em;
+                    }
+
+                    pre {
+                        min-height: 0;
+                        max-height: 150px;
+                        padding: 10px;
+                        overflow: auto;
+                        background-color: #A7F0AC;
+                        border-radius: 5px;
+                    }
+
+                    .buttonContainer {
+                        display: flex;
+                        gap: 10px;
+
+                            .editActivityButton {
+                                background-color: #53DBF6;
+                                border: 1px solid black;
+                                border-radius: 5px;
+                                padding: 10px 0 10px 0;
+                                flex: 1;
+                                cursor: pointer;
+                            }
+                            .deleteActivityButton {
+                                background-color: #FF0000;
+                                border: 1px solid black;
+                                border-radius: 5px;
+                                padding: 10px 0 10px 0;
+                                flex: 1;
+                                cursor: pointer;
+                            }
+                    }
+            }
+
+            .editingTextArea {
+                display: flex;
+                flex-direction: column;
+                gap: 25px;
+
+                    input, textarea {
+                        padding: 10px;
+                        border-radius: 5px;
+                        border: solid 1px black;
+                    }
+                    button {
+                        background-color: #53DBF6;
+                        border: 1px solid black;
+                        border-radius: 5px;
+                        padding: 10px 0 10px 0;
+                        cursor: pointer;
+                    }
+            }
+    }
+    .exitActivityDetails {
+        z-index: 99999;
+        top: 0;
+        left: 0;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: #FF0000;
+        transform: translate(-50%, -50%);
+        cursor: pointer;
+        position: absolute;
+
+            img {
+                height: 100%;
+                width: 100%;
+            }
+    }
 }

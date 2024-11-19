@@ -56,6 +56,9 @@
   border: 1px solid #737272;
   padding: 10px;
 }
+#savedRecipesSection .accordion .visibleAccordion .sortAndSearch input {
+  width: 100%;
+}
 #savedRecipesSection .accordion .visibleAccordion ol {
   background-color: white;
   border-radius: 5px;
@@ -82,89 +85,147 @@
 #savedRecipesSection .accordion .visible {
   transform: scaleY(1);
 }
-#savedRecipesSection .savedMealDetails {
+#savedRecipesSection .mealDetailsBackground {
   position: fixed;
-  top: 25px;
-  bottom: 25px;
-  left: 25px;
-  right: 25px;
-  background-color: #D9D9D9;
-  padding: 10px;
-  border-radius: 5px;
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   z-index: 1;
 }
-#savedRecipesSection .savedMealDetails .recipeName {
-  font-size: 1.5em;
+#savedRecipesSection .mealDetailsBackground .savedMealDetails {
+  position: fixed;
+  top: 50%;
+  left: 25px;
+  right: 25px;
+  max-height: 100vh;
+  transform: translateY(-50%);
+  background-color: #9CDAA0;
+  padding: 25px;
+  border-radius: 5px;
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  z-index: 10;
 }
-#savedRecipesSection .savedMealDetails .recipeContainer {
+#savedRecipesSection .mealDetailsBackground .savedMealDetails .recipeContainer {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
-#savedRecipesSection .savedMealDetails .recipeContainer .recipeHeading {
-  font-size: 1.2em;
-}
-#savedRecipesSection .savedMealDetails .recipeContainer .recipeField {
-  background-color: white;
-  padding: 10px;
-  border-radius: 5px;
-  position: relative;
-}
-#savedRecipesSection .savedMealDetails .recipeContainer .recipeField button {
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-#savedRecipesSection .savedMealDetails .recipeContainer .editingTextArea {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-#savedRecipesSection .savedMealDetails #ratingContainer {
+#savedRecipesSection .mealDetailsBackground .savedMealDetails .recipeContainer .notEditingMeal {
   display: flex;
   flex-direction: column;
   gap: 25px;
 }
-#savedRecipesSection .savedMealDetails #ratingContainer .healthRating {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+#savedRecipesSection .mealDetailsBackground .savedMealDetails .recipeContainer .notEditingMeal .recipeName {
+  font-size: 1.5em;
 }
-#savedRecipesSection .savedMealDetails #ratingContainer .healthRating input {
-  max-width: 50px;
-  height: 50px;
-}
-#savedRecipesSection .savedMealDetails #ratingContainer .priceRating {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-#savedRecipesSection .savedMealDetails #ratingContainer .priceRating input {
-  max-width: 100px;
-  height: 50px;
-}
-#savedRecipesSection .savedMealDetails #ratingContainer .doneMealDetails {
-  width: 100%;
-  padding: 20px;
-  background-color: green;
-  text-align: center;
+#savedRecipesSection .mealDetailsBackground .savedMealDetails .recipeContainer .notEditingMeal pre {
+  min-height: 0;
+  max-height: 150px;
+  padding: 10px;
+  overflow: auto;
+  background-color: #A7F0AC;
   border-radius: 5px;
+}
+#savedRecipesSection .mealDetailsBackground .savedMealDetails .recipeContainer .notEditingMeal .buttonsContainer {
+  display: flex;
+  gap: 10px;
+}
+#savedRecipesSection .mealDetailsBackground .savedMealDetails .recipeContainer .notEditingMeal .buttonsContainer .editMealButton {
+  background-color: #53DBF6;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px 0 10px 0;
+  flex-grow: 2;
   cursor: pointer;
 }
-#savedRecipesSection .savedMealDetails #ratingContainer .doneMealDetails p {
+#savedRecipesSection .mealDetailsBackground .savedMealDetails .recipeContainer .notEditingMeal .buttonsContainer .deleteMealButton {
+  background-color: #FF0000;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px 0 10px 0;
+  flex-grow: 1;
+  cursor: pointer;
+}
+#savedRecipesSection .mealDetailsBackground .savedMealDetails .recipeContainer .recipeHeading {
   font-size: 1.2em;
 }
-#savedRecipesSection .savedMealDetails .exitMealDetails {
-  width: 50px;
-  height: 50px;
+#savedRecipesSection .mealDetailsBackground .savedMealDetails .recipeContainer .editingTextArea {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+#savedRecipesSection .mealDetailsBackground .savedMealDetails .recipeContainer .editingTextArea input, #savedRecipesSection .mealDetailsBackground .savedMealDetails .recipeContainer .editingTextArea textarea {
+  padding: 10px;
+  border-radius: 5px;
+  border: solid 1px black;
+}
+#savedRecipesSection .mealDetailsBackground .savedMealDetails .recipeContainer .editingTextArea button {
+  background-color: #53DBF6;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px 0 10px 0;
+  cursor: pointer;
+}
+#savedRecipesSection .mealDetailsBackground .savedMealDetails #ratingContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+#savedRecipesSection .mealDetailsBackground .savedMealDetails #ratingContainer .ratingFields {
+  display: flex;
+  justify-content: space-between;
+  gap: 25px;
+}
+#savedRecipesSection .mealDetailsBackground .savedMealDetails #ratingContainer .ratingFields .healthRating {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+#savedRecipesSection .mealDetailsBackground .savedMealDetails #ratingContainer .ratingFields .healthRating input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+#savedRecipesSection .mealDetailsBackground .savedMealDetails #ratingContainer .ratingFields .priceRating {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+#savedRecipesSection .mealDetailsBackground .savedMealDetails #ratingContainer .ratingFields .priceRating input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+#savedRecipesSection .mealDetailsBackground .savedMealDetails #ratingContainer .doneMealDetails {
+  width: 100%;
+  padding: 20px;
+  background-color: #7EF653;
+  text-align: center;
+  border-radius: 5px;
+  border: 1px solid black;
+  cursor: pointer;
+}
+#savedRecipesSection .mealDetailsBackground .savedMealDetails .exitMealDetails {
+  z-index: 99999;
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
-  background-color: red;
+  background-color: #FF0000;
+  transform: translate(-50%, -50%);
   cursor: pointer;
   position: absolute;
-  top: 0;
-  right: 0;
-  transform: translate(25%, -25%);
+}
+#savedRecipesSection .mealDetailsBackground .savedMealDetails .exitMealDetails img {
+  height: 100%;
+  width: 100%;
 }/*# sourceMappingURL=SavedRecipes.module.css.map */
