@@ -1,6 +1,6 @@
 #newRecipeForm {
   background-color: #C1F1F7;
-  padding: 10px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -88,7 +88,8 @@
 
 #savedActivitiesContainer {
   background-color: #C1F1F7;
-  padding: 10px;
+  padding: 0 20px 20px 20px;
+  margin-top: -10px;
   display: flex;
   flex-direction: column;
   gap: 10px;
