@@ -6,7 +6,7 @@
   transform: translateY(-50%);
   border-radius: 5px;
   border: 2px solid black;
-  max-height: 100vh;
+  max-height: calc(100vh - 40px);
   min-height: 250px;
   padding: 20px;
 }
@@ -56,15 +56,17 @@
   margin-left: 10px;
   margin-right: 10px;
   margin-bottom: 10px;
+  max-height: 250px;
+  overflow-y: auto;
 }
 .fixedListBox .container .fieldsContainer .listContainer li {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  cursor: pointer;
 }
 .fixedListBox .container .fieldsContainer .listContainer li img {
   height: 1.5em;
+  cursor: pointer;
 }
 .fixedListBox .exitButton {
   position: absolute;

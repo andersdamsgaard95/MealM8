@@ -8,11 +8,40 @@ interface PickingListProps {
     heading: string,
     colorCodeHeading: string,
     exitPickingList: () => void,
-    pickingList: SavedActivity[] | SavedMeal[]
-    listType: 'meals' | 'activities';
+    pickingList: SavedActivity[] | SavedMeal[],
+    listType: 'meals' | 'activities',
+    handleClick: (index:number) => void,
+    savedMeals: SavedMeal[],
+    savedActivitiesList: SavedActivity[]
 }
 
-export default function PickingList ({ backgroundColor, colorCode, heading, colorCodeHeading, exitPickingList, pickingList, listType }: PickingListProps) {
+export default function PickingList ({ backgroundColor, colorCode, heading, colorCodeHeading, exitPickingList, pickingList, listType, handleClick, savedMeals, savedActivitiesList }: PickingListProps) {
+
+    const [searchWord, setSearchWord] = useState('');
+
+    function handleSearch(e: React.ChangeEvent<HTMLInputElement>) {
+        setSearchWord(e.target.value);
+    }
+
+    function getActualIndex(searchListIndex:number) {
+        let actualIndex;
+        if (listType === 'meals') {
+            actualIndex = savedMeals.findIndex((item) => item === filteredSearchList[searchListIndex])
+        } else if (listType === 'activities') {
+            actualIndex = savedActivitiesList.findIndex((item) => item === filteredSearchList[searchListIndex])
+        }
+        handleClick(actualIndex);
+    }
+
+    const filteredSearchList = pickingList.filter((item) => {
+        if (listType === 'meals' && 'mealName' in item) {
+            return item.mealName.toLowerCase().includes(searchWord.toLowerCase());
+        }
+        if (listType === 'activities' && 'activityName' in item) {
+            return item.activityName.toLowerCase().includes(searchWord.toLowerCase());
+        }
+        return false;
+    });
 
     return (
         <div className={styles.fixedListBox} style={{ backgroundColor: backgroundColor }}> 
@@ -29,19 +58,30 @@ export default function PickingList ({ backgroundColor, colorCode, heading, colo
                                 type="search"
                                 id='search' 
                                 placeholder='search'
+                                value={searchWord}
+                                onChange={handleSearch}
                             />
                         </label>
                     </div>
                     <ul className={styles.listContainer}>
                         {
-                            pickingList.map((item, index) => (
+                            filteredSearchList.length > 0 ?
+                            filteredSearchList.map((item, index) => (
                                 <li className={styles.pickingListItem}>
                                     <p>
                                         {listType === 'meals' ? (item as SavedMeal).mealName : listType === 'activities' ? (item as SavedActivity).activityName : null}
                                     </p>
-                                    <img src="plusIcon.svg" alt="add to event" />
+                                    <img 
+                                        src="plusIcon.svg" 
+                                        alt="add to event"
+                                        onClick={() => getActualIndex(index)}
+                                    />
                                 </li>
-                            ))
+                            )) : 
+                                listType === 'meals' ? 
+                                    <p>You have no saved recepies... <br/> Go to "New recipe" and save some recipies</p> : 
+                                listType === 'activities' ? 
+                                    <p>You have no saved activities <br/> Go to "Life" and save some activities</p> : null
                         }
                     </ul>
                 </div>                       

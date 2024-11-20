@@ -39,10 +39,9 @@ $boxShadow: 0 4px 6px rgba(0, 0, 0, 0.5);
     left: 25px;
     right: 25px;
     transform: translateY(-50%);
-    //background-color: $color;
     border-radius: 5px;
     border: 2px solid black;
-    max-height: 100vh;
+    max-height: calc(100vh - 40px);
     min-height: 250px;
     padding: 20px;
 }

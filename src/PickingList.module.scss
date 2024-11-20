@@ -56,15 +56,17 @@
                             margin-left: 10px;
                             margin-right: 10px;
                             margin-bottom: 10px;
+                            max-height: 250px;
+                            overflow-y: auto;
     
                                 li {
                                     display: flex;
                                     align-items: center;
                                     justify-content: space-between;
-                                    cursor: pointer;
     
                                         img {
                                             height: 1.5em;
+                                            cursor: pointer;
                                         }
                                     }
                         }

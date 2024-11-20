@@ -45,11 +45,16 @@ export default function Day ({
 
     //  STATE VARIABLES
     const [timeEditingIndex, setTimeEditingIndex] = useState<number | null>(null);
-    //const [noteIsBeingEdited, setNoteIsBeingEdited] = useState(false);
     const [newStartTime, setNewStartTime] = useState<string>('');
     const [newEndTime, setNewEndTime] = useState<string>('');
     const [pickingList, setPickingList] = useState('');
-    //const [newEventNote, setNewEventNote] = useState<string>('');
+    const [clickedEventIndex, setClickedEventIndex] = useState<number | null>(null);
+    const [eventListIsShown, setEventListIsShown] = useState(false);
+    const [eventListItemEditIndex, setEventListItemEditIndex] = useState<number | null>(null);
+    const [editingListItemName, setEditingListItemName] = useState('');
+    const [editingListItemDescription, setEditingListItemDescription] = useState('');
+    const [noteEditingIndex, setNoteEditingIndex] = useState<number | null>(null);
+    const [newNote, setNewNote] = useState<string>('');
 
     function addItemToCalender(colorCode:string) {
         setCalender((prev) => [
@@ -58,7 +63,7 @@ export default function Day ({
                 colorCode: colorCode,
                 startTime: 'Add start time',
                 endTime: 'Add end time',
-                note: 'Add note',
+                note: '',
                 calenderItemList: []
             }
         ])
@@ -102,17 +107,168 @@ export default function Day ({
         setTimeEditingIndex(null);
     }
 
-    function pickActivity(clickedEvent) {
+    function pickActivity(clickedEvent:number) {
+        setClickedEventIndex(clickedEvent)
         setPickingList('activity');
-
     }
 
-    function pickMeal(clickedEvent) {
+    function pickMeal(clickedEvent:number) {
+        setClickedEventIndex(clickedEvent)
         setPickingList('meal');
     }
 
     function exitPickingList() {
         setPickingList('');
+    }
+
+    function choseFromPickingList(pickedIndex:number) {
+        if (pickingList === 'meal') {
+            setCalender((prev) => (
+                prev.map((item, index) => (
+                    index === clickedEventIndex ? 
+                    {
+                        ...item,
+                        calenderItemList: [
+                            ...item.calenderItemList,
+                            {
+                                name: savedMeals[pickedIndex].mealName,
+                                description: savedMeals[pickedIndex].mealRecipe
+                            }
+                        ]
+                    } : item
+                ))
+            ))
+        } else if (pickingList === 'activity') {
+            setCalender((prev) => (
+                prev.map((item, index) => (
+                    index === clickedEventIndex ? 
+                    {
+                        ...item,
+                        calenderItemList: [
+                            ...item.calenderItemList,
+                            {
+                                name: savedActivitiesList[pickedIndex].activityName,
+                                description: savedActivitiesList[pickedIndex].activityDescription
+                            }
+                        ]
+                    } : item
+                ))
+            ))
+        }
+        setPickingList('');
+        setClickedEventIndex(null);
+    }
+
+    function showEventList(clickedIndex:number) {
+        setClickedEventIndex(clickedIndex);
+        setEventListIsShown(true);
+    }
+
+    function exitEventList() {
+        setEventListIsShown(false);
+        setClickedEventIndex(null);
+    }
+
+    function editEventListItem(editetIndex:number, oldName:string, oldDescription:string) {
+        setEventListItemEditIndex(editetIndex);
+        setEditingListItemName(oldName);
+        setEditingListItemDescription(oldDescription);
+    }
+
+    function handleEdit(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
+        const { id, value } = e.target;
+
+        switch (id) {
+            case 'editingName':
+                setEditingListItemName(value);
+                break;
+            case 'editingDescription':
+                setEditingListItemDescription(value);
+                break;
+        }
+    }
+
+    function saveListItemEdit(editedIndex:number) {
+        setCalender((prev) => {
+            // Create a new array for calender
+            const updatedCalender = prev.map((item, index) => {
+                if (index === clickedEventIndex) {
+                    // Create a new calenderItemList for the specific item
+                    const updatedCalenderItemList = item.calenderItemList.map((listItem, listIndex) => 
+                        listIndex === editedIndex
+                            ? { name: editingListItemName, description: editingListItemDescription }
+                            : listItem
+                    );
+    
+                    // Return the updated item
+                    return { ...item, calenderItemList: updatedCalenderItemList };
+                } else {
+                    return item;
+                }
+                
+            });
+            return updatedCalender;
+        });
+    
+        setEventListItemEditIndex(null);
+        setEditingListItemName('');
+        setEditingListItemDescription('');
+    }
+
+    function deleteEventListItem(indexToDelete:number) {
+        const deleteEventListItemConfirmation = window.confirm('Sure you want to delete this?');
+
+        if (deleteEventListItemConfirmation) {
+            setCalender((prev) => {
+                const updatedCalender = prev.map((item, index) => {
+                    if (index === clickedEventIndex) {
+                        const updatedCalenderItemList = item.calenderItemList.filter((_, index) => 
+                            index !== indexToDelete
+                        )
+                        return {...item, calenderItemList: updatedCalenderItemList};
+                    } else {
+                        return item;
+                    }
+                })
+                return updatedCalender;
+            })
+        }
+    }
+
+    function deleteEvent(eventToDelete:number) {
+        const deleteEventConfirmation = window.confirm('Sure you want to delete this event?');
+
+        if (deleteEventConfirmation) {
+            setCalender((prev) => 
+            prev.filter((_, index) => 
+                index !== eventToDelete
+            )
+        )
+        }
+    }
+
+    function editNote(editingIndex:number) {
+        setNoteEditingIndex(editingIndex);
+        setNewNote(calender[editingIndex].note)
+    }
+    
+    function handleEditNote(e: React.ChangeEvent<HTMLTextAreaElement>) {
+        setNewNote(e.target.value);
+    }
+
+    function saveNote(indexToSaveNote:number) {
+        setCalender((prev) => 
+            prev.map((item, index) => 
+                index === indexToSaveNote ? 
+                    {
+                        ...item,
+                        note: newNote
+                    }
+                : item
+            )
+        )
+        setNoteEditingIndex(null);
+        setNewNote('');    
     }
 
     return (
@@ -162,14 +318,36 @@ export default function Day ({
                                                 </div>
                                             }
 
-                                            <label htmlFor="calenderItemNote">
-                                                <input 
-                                                    className={styles.calenderItemNote}
-                                                    type="text" 
-                                                    id='calenderItemNote' 
-                                                />
-                                            </label>
+                                            {/* NOTE */}
+                                            
+                                                <div className={styles.noteAccordion}>
+                                                    <div className={styles.addNoteButton} onClick={() => (noteEditingIndex === index ? saveNote(index) : editNote(index))}>
+                                                        <p>Note</p>
+                                                        <img 
+                                                            src="arrow.svg" 
+                                                            alt="Open note" 
+                                                            className={`${styles.arrow} ${noteEditingIndex === index ? styles.flippedArrow : ''}`} 
+                                                        />
+                                                    </div>
 
+                                                    {
+                                                        noteEditingIndex === index && (
+                                                            <label className={styles.editingNote} htmlFor="calenderItemNote">
+                                                                <textarea
+                                                                    className={styles.calenderItemNote}
+                                                                    id='calenderItemNote' 
+                                                                    value={newNote}
+                                                                    placeholder='add note'
+                                                                    onChange={handleEditNote}
+                                                                >
+                                                                </textarea>
+                                                            </label>
+                                                        )
+                                                    }
+                                                </div>   
+                                            
+                                            
+                                            {/* BUTTONS */}
                                             <div className={styles.eventButtons}>
                                                 <img 
                                                     src="plusIcon.svg" 
@@ -178,8 +356,14 @@ export default function Day ({
                                                 />
                                                 <img 
                                                     src="recipeIcon.svg" 
-                                                    alt="see recipies or activities attached to this event" 
+                                                    alt="see recipies or activities attached to this event"
+                                                    onClick={() => showEventList(index)} 
                                                 />
+                                            </div>
+
+                                            {/* DELETE BUTTON */}
+                                            <div className={styles.deleteEventButton} onClick={() => deleteEvent(index)}>
+                                                <img src="trash.svg" alt="delete event" />
                                             </div>
 
                                         </li>
@@ -201,6 +385,9 @@ export default function Day ({
                             exitPickingList={exitPickingList}
                             pickingList={savedActivitiesList}
                             listType={'activities'}
+                            handleClick={choseFromPickingList}
+                            savedMeals={savedMeals}
+                            savedActivitiesList={savedActivitiesList}
                         /> 
                     )
                     :
@@ -213,8 +400,64 @@ export default function Day ({
                             exitPickingList={exitPickingList}
                             pickingList={savedMeals}
                             listType='meals'
+                            handleClick={choseFromPickingList}
+                            savedMeals={savedMeals}
+                            savedActivitiesList={savedActivitiesList}
                         />
                     ) : null
+                }
+
+                {/* EVENT LIST BEING SHOWN */}
+                {
+                    eventListIsShown && (
+                        <div className={styles.fixedEventList}>
+                            <ul>
+                                {
+                                    calender[clickedEventIndex].calenderItemList.length > 0 ?
+                                        calender[clickedEventIndex].calenderItemList.map((item, index) => (
+                                            index === eventListItemEditIndex ? 
+                                            (
+                                                <li>
+                                                    <label htmlFor="editingName">
+                                                        <input 
+                                                            type="text"
+                                                            id='editingName'
+                                                            value={editingListItemName}
+                                                            onChange={handleEdit} 
+                                                        />
+                                                    </label>
+                                                    <label htmlFor="editingDescription">
+                                                        <textarea 
+                                                            id="editingDescription"
+                                                            value={editingListItemDescription}
+                                                            onChange={handleEdit}
+                                                        >                                                          
+                                                        </textarea>
+                                                    </label>
+                                                    <button onClick={() => saveListItemEdit(index)}>Save Edit</button>
+                                                </li>
+                                            ) 
+                                            : 
+                                            (
+                                                <li>
+                                                    <p>{item.name}</p>
+                                                    <pre>{item.description}</pre>
+                                                    <div className={styles.buttonContainer}>
+                                                        <button onClick={() => editEventListItem(index, item.name, item.description)}>Edit</button>
+                                                        <button onClick={() => deleteEventListItem(index)}>Delete</button>
+                                                    </div>
+                                                </li>
+                                            )
+                                        ))
+                                    : 
+                                        <p>You haven't attached anything to this event...</p>
+                                }
+                            </ul>
+                            <div className={styles.exitButton} onClick={exitEventList}>
+                                <img src="x.svg" alt="exit" />
+                            </div>
+                        </div>
+                    )
                 }
             </div>
 

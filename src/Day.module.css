@@ -11,6 +11,7 @@
   gap: 10px;
   flex-grow: 1;
   overflow-y: auto;
+  padding: 10px 10px 0 10px;
 }
 #day .calender .calenderFlex {
   display: flex;
@@ -20,23 +21,28 @@
   padding: 0;
 }
 #day .calender .calenderFlex .calenderItem {
-  height: 50px;
-  display: flex;
-  gap: 10px;
+  display: grid;
+  align-items: center;
+  grid-template-columns: auto auto 1fr auto;
+  gap: 5px;
   width: 100%;
   background-color: #DFF1F4;
   border-radius: 5px;
   border: 1px solid black;
+  position: relative;
 }
 #day .calender .calenderFlex .calenderItem .colorCode {
+  grid-column: 1/2;
   width: 25px;
   height: 100%;
-  border-radius: 5px 0 0 5px;
+  border-radius: 4px 0 0 4px;
   flex-shrink: 0;
 }
 #day .calender .calenderFlex .calenderItem .editingTimeInputs {
+  grid-column: 2/3;
   display: flex;
   gap: 0px;
+  height: 100%;
 }
 #day .calender .calenderFlex .calenderItem .editingTimeInputs .timeInputs {
   display: flex;
@@ -44,7 +50,6 @@
   gap: 0;
   height: calc(100% - 10px);
   width: auto;
-  padding: 0;
 }
 #day .calender .calenderFlex .calenderItem .editingTimeInputs .timeInputs .timeInput {
   width: 100px;
@@ -53,38 +58,124 @@
 #day .calender .calenderFlex .calenderItem .editingTimeInputs .saveTime {
   height: 100%;
   cursor: pointer;
+  background-color: #53DBF6;
+  border-radius: 5px;
+  border: 1px solid black;
+  width: -moz-min-content;
+  width: min-content;
 }
 #day .calender .calenderFlex .calenderItem .addTimeButton {
+  grid-column: 2/3;
   display: flex;
   flex-direction: column;
-  gap: 0;
+  justify-content: space-evenly;
   margin: 5px 0 5px 0;
   padding: 1px;
   white-space: nowrap;
   border: 1px solid black;
   cursor: pointer;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+  height: calc(100% - 10px);
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
-#day .calender .calenderFlex .calenderItem .calenderItemNote {
+#day .calender .calenderFlex .calenderItem .noteAccordion {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 100%;
+}
+#day .calender .calenderFlex .calenderItem .noteAccordion .addNoteButton {
+  grid-column: 3/4;
+  cursor: pointer;
+  padding: 1px;
+  white-space: nowrap;
+  border: 1px solid black;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+  height: 100%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+}
+#day .calender .calenderFlex .calenderItem .noteAccordion .addNoteButton p {
+  width: 100%;
+  overflow: hidden;
+}
+#day .calender .calenderFlex .calenderItem .noteAccordion .addNoteButton .arrow {
+  height: 1.5em;
+  transition: transform 0.3s ease;
+}
+#day .calender .calenderFlex .calenderItem .noteAccordion .addNoteButton .flippedArrow {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
+}
+#day .calender .calenderFlex .calenderItem .noteAccordion .editingNote {
+  display: flex;
+  position: absolute;
+  top: calc(100% - 5px);
+}
+#day .calender .calenderFlex .calenderItem .noteAccordion .editingNote .calenderItemNote {
+  grid-column: 3/4;
   background-color: white;
   cursor: text;
   height: calc(100% - 10px);
-  margin: 5px 0;
   border-radius: 5px;
   border: 1px solid black;
-  padding: 5px;
+  padding: 10px;
   box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  height: 200px;
+  z-index: 1;
+}
+#day .calender .calenderFlex .calenderItem .noteAccordion .editingNote .saveNoteButton {
+  cursor: pointer;
+  background-color: #53DBF6;
+  border-radius: 5px;
+  border: 1px solid black;
+  padding: 10px;
+  z-index: 2;
 }
 #day .calender .calenderFlex .calenderItem .eventButtons {
+  grid-column: 4/5;
   display: flex;
   justify-content: end;
   width: 100%;
   gap: 5px;
-  padding: 5px 5px 5px 0;
+  padding-right: 5px;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+@media screen and (max-width: 400px) {
+  #day .calender .calenderFlex .calenderItem .eventButtons {
+    flex-direction: column;
+  }
 }
 #day .calender .calenderFlex .calenderItem .eventButtons img {
   height: 100%;
   cursor: pointer;
+}
+#day .calender .calenderFlex .calenderItem .deleteEventButton {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  background-color: #FF0000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+#day .calender .calenderFlex .calenderItem .deleteEventButton img {
+  height: 0.8em;
 }
 #day .addEventButtons {
   display: grid;
@@ -125,4 +216,95 @@
   background-color: #53A461;
   border-radius: 5px;
   padding: 10px;
+}
+#day .fixedEventList {
+  position: fixed;
+  top: 50%;
+  left: 25px;
+  right: 25px;
+  transform: translateY(-50%);
+  border-radius: 5px;
+  border: 2px solid black;
+  max-height: calc(100vh - 40px);
+  min-height: 250px;
+  padding: 20px;
+  background-color: #9CDAA0;
+}
+#day .fixedEventList ul {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding: 0;
+  list-style: none;
+  max-height: calc(100vh - 80px);
+  overflow-y: auto;
+}
+#day .fixedEventList ul li {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 20px;
+  background-color: #EFF9FB;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+#day .fixedEventList ul li p {
+  font-size: 1.2em;
+}
+#day .fixedEventList ul li pre {
+  max-height: 150px;
+  overflow-y: auto;
+  background-color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+#day .fixedEventList ul li .buttonContainer {
+  display: flex;
+  gap: 10px;
+}
+#day .fixedEventList ul li .buttonContainer button:nth-of-type(1) {
+  flex: 2;
+  background-color: #53DBF6;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px 0 10px 0;
+  cursor: pointer;
+}
+#day .fixedEventList ul li .buttonContainer button:nth-of-type(2) {
+  flex: 1;
+  background-color: #FF0000;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px 0 10px 0;
+  cursor: pointer;
+}
+#day .fixedEventList ul li input, #day .fixedEventList ul li textarea {
+  padding: 10px;
+  border-radius: 5px;
+  border: solid 1px black;
+  width: 100%;
+}
+#day .fixedEventList ul li button {
+  background-color: #53DBF6;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px 0 10px 0;
+  cursor: pointer;
+}
+#day .fixedEventList .exitButton {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  background-color: #FF0000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+#day .fixedEventList .exitButton img {
+  height: 2em;
 }/*# sourceMappingURL=Day.module.css.map */
