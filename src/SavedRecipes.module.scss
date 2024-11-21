@@ -94,10 +94,12 @@
                 .savedMealDetails {
                     position: fixed;
                     top: 50%;
-                    left: 25px;
-                    right: 25px;
+                    left: 50%;
+                    right: 50%;
                     max-height: 100vh;
-                    transform: translateY(-50%);
+                    width: calc(100% - 50px);
+                    max-width: 800px;
+                    transform: translate(-50%,-50%);
                     background-color: #DEF2DF;
                     padding: 25px;
                     border-radius: 5px;
@@ -142,6 +144,7 @@
                                                     padding: 10px 0 10px 0;
                                                     flex-grow: 2;
                                                     cursor: pointer;
+                                                    @include boxShadowWithHover;
                                                 }
                                                 .deleteMealButton {
                                                     background-color: #FF0000;
@@ -150,6 +153,7 @@
                                                     padding: 10px 0 10px 0;
                                                     flex-grow: 1;
                                                     cursor: pointer;
+                                                    @include boxShadowWithHover;
                                                 }
                                         }
                                 }
@@ -173,6 +177,7 @@
                                             border-radius: 5px;
                                             padding: 10px 0 10px 0;
                                             cursor: pointer;
+                                            @include boxShadowWithHover;
                                         }
                                 }
                         }
@@ -223,6 +228,7 @@
                                     border-radius: 5px;
                                     border: 1px solid black;
                                     cursor: pointer;
+                                    @include boxShadowWithHover;
                                 }
                         }
 

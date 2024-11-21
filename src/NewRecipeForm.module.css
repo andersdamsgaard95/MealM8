@@ -190,10 +190,12 @@
 .savedActivityDetails {
   position: fixed;
   top: 50%;
-  left: 25px;
-  right: 25px;
+  left: 50%;
+  right: 50%;
   max-height: 100vh;
-  transform: translateY(-50%);
+  width: calc(100% - 50px);
+  max-width: 800px;
+  transform: translate(-50%, -50%);
   background-color: #9CDAA0;
   padding: 25px;
   border-radius: 5px;

@@ -234,7 +234,7 @@ export default function NewRecipeForm ({
                                         filteredActivities.map((activity, index) => (
                                             <li onClick={() => showActivityDetails(index)}>
                                                 <p>{activity.activityName}</p>
-                                                <img src="recipeIcon.svg" alt="See Activity" /> {/** ÆNDR IMG IKON */}
+                                                <img src="activityIcon.svg" alt="See Activity" /> {/** ÆNDR IMG IKON */}
                                             </li>
                                         ))
                                     ) : 
@@ -291,7 +291,12 @@ export default function NewRecipeForm ({
             {
                 toast && (
                     <div className={styles.toastContainer}>
-                        <p>You have saved this recipe!</p>
+                        {
+                            activeForm === 'recipe' ?
+                                <p>You have saved this recipe!</p>
+                            :
+                                <p>You have saved this activity!</p>
+                        }
                     </div>
                 )
             }
