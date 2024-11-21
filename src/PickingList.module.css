@@ -28,14 +28,14 @@
   align-items: center;
   gap: 10px;
   background-color: white;
-  border-radius: 5px;
+  border-radius: 4px;
   height: 35px;
   border: 1px solid black;
 }
 .fixedListBox .container .fieldsContainer .colorCodeHeading .colorCode {
   width: 25px;
   height: 100%;
-  border-radius: 5px 0 0 5px;
+  border-radius: 3px 0 0 3px;
 }
 .fixedListBox .container .fieldsContainer .searchDiv {
   margin-left: 10px;

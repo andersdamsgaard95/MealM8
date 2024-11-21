@@ -1,14 +1,14 @@
 //  FARVER
 $globalNavColor: #B7E4E9;
 $activeNavColor: #C1F1F7;
-$boxShadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+$boxShadow: -6px 6px 6px rgba(0, 0, 0, 0.3);
 
 //  MIXINS
 @mixin colorCodeHeading ($width: 25px, $color: #9CDAA0) {
     border: solid 1px black;
     background-color: white;
     height: 2em;
-    border-radius: 5px;
+    border-radius: 4px;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -17,13 +17,13 @@ $boxShadow: 0 4px 6px rgba(0, 0, 0, 0.5);
             height: 100%;
             width: $width;
             background-color: $color;
-            border-radius: 5px 0 0 5px;
+            border-radius: 3px 0 0 3px;
         }
 
-        .heading {
+        /*.heading {
             font-size: 1em;
             width: 100%;
-        }
+        }*/
 }
 
 @mixin hiddenAccordion {

@@ -79,7 +79,7 @@ export default function PickingList ({ backgroundColor, colorCode, heading, colo
                                 </li>
                             )) : 
                                 listType === 'meals' ? 
-                                    <p>You have no saved recepies... <br/> Go to "New recipe" and save some recipies</p> : 
+                                    <p>You have no saved recipes... <br/> Go to "New recipe" and save some recipes</p> : 
                                 listType === 'activities' ? 
                                     <p>You have no saved activities <br/> Go to "Life" and save some activities</p> : null
                         }

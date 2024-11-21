@@ -85,7 +85,7 @@ export default function TopOfApp ({
                     id={styles.savedRecipesButton}
                     className={activeButton === 'savedRecipes' ? styles.activeNavButton : ''}
                 >
-                    Saved recipes
+                    My recipes
                     <img 
                         src="arrow.svg" alt="arrow" 
                         className={activeButton === 'savedRecipes' ? styles.flippedImg : ''}
@@ -110,7 +110,7 @@ export default function TopOfApp ({
             {
                 activeButton === 'newRecipe' ? 
                     <NewRecipeForm 
-                        heading={'what meal (recipe) are you making?'}
+                        heading={'What meal (recipe) are you making?'}
                         inputId={'mealName'}
                         inputPlaceholder={'Giv dit måltid et navn! ...Lasagne?'}
                         textareaId={'mealRecipe'}

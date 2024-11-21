@@ -9,7 +9,7 @@
             border-radius: 5px;
 
                 .colorCodeHeading {
-                    @include colorCodeHeading($width: 28.5px);
+                    @include colorCodeHeading;
                     
                     img {
                         height: 2em;
@@ -98,7 +98,7 @@
                     right: 25px;
                     max-height: 100vh;
                     transform: translateY(-50%);
-                    background-color: #9CDAA0;
+                    background-color: #DEF2DF;
                     padding: 25px;
                     border-radius: 5px;
                     border: 2px solid black;
@@ -127,7 +127,7 @@
                                             max-height: 150px;
                                             padding: 10px;
                                             overflow: auto;
-                                            background-color: #A7F0AC;
+                                            background-color: white;
                                             border-radius: 5px;
                                         }
         

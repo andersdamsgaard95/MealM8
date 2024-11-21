@@ -350,12 +350,12 @@ export default function Day ({
                                             {/* BUTTONS */}
                                             <div className={styles.eventButtons}>
                                                 <img 
-                                                    src="plusIcon.svg" 
+                                                    src="plusIconNew.svg" 
                                                     alt="add recipe or activity to event"
                                                     onClick={calenderItem.colorCode === colorCodes.activity ? () => pickActivity(index) : () => pickMeal(index)}
                                                 />
                                                 <img 
-                                                    src="recipeIcon.svg" 
+                                                    src="recipeIconNew.svg" 
                                                     alt="see recipies or activities attached to this event"
                                                     onClick={() => showEventList(index)} 
                                                 />
@@ -393,7 +393,7 @@ export default function Day ({
                     :
                     pickingList === 'meal' && savedMeals ? (
                         <PickingList 
-                            backgroundColor={'#9CDAA0'}
+                            backgroundColor={'#DEF2DF'}
                             colorCode='#9CDAA0'
                             heading='Add a recipe to this event'
                             colorCodeHeading='Saved Recipes'
@@ -461,7 +461,7 @@ export default function Day ({
                 }
             </div>
 
-            {/* ADD EVENT TO CALENDER BUTTON */}
+            {/* ADD EVENT TO CALENDER BUTTONS */}
             <div className={styles.addEventButtons}>
                 <button onClick={() => addItemToCalender(colorCodes.mealTime)}>
                     <div className={styles.colorCode} style={{ backgroundColor: colorCodes.mealTime }}></div>

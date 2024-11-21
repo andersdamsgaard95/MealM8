@@ -132,7 +132,7 @@ export default function SavedRecipes ({ savedMeals, setSavedMeals }: { savedMeal
             <div className={styles.accordion}>
                 <div className={styles.colorCodeHeading}>
                     <div className={styles.colorCode}></div>
-                    <h1 className={styles.heading}>Saved Recipes</h1>
+                    <h1 className={styles.heading}>My recipes</h1>
                 </div>
                 <div className={styles.visibleAccordion}>
                     <div className={styles.sortAndSearch}>
