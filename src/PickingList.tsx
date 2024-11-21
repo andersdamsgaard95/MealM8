@@ -89,7 +89,8 @@ export default function PickingList ({ backgroundColor, colorCode, heading, colo
             {/* EXIT BUTTON */}
             <div className={styles.exitButton} onClick={exitPickingList}>
                 <img src="x.svg" alt="exit" />
-            </div>                  
+            </div> 
+
         </div> 
     )
 }

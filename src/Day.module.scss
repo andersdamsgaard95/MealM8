@@ -217,6 +217,7 @@
                     text-align: center;
                     display: flex;
                     align-items: center;
+                    @include boxShadowWithHover;
 
                         .colorCode {
                             width: 25px;
@@ -252,6 +253,7 @@
             padding: 10px 10px 6px 10px;
             margin: 0 10px 0 10px;
             border-radius: 5px;
+            box-shadow: $boxShadow;
 
                 button {
                     all: unset;
@@ -309,6 +311,7 @@
                                             border-radius: 5px;
                                             padding: 10px 0 10px 0;
                                             cursor: pointer;
+                                            @include boxShadowWithHover;
                                         }
                                         button:nth-of-type(2) {
                                             flex: 1;
@@ -317,6 +320,7 @@
                                             border-radius: 5px;
                                             padding: 10px 0 10px 0;
                                             cursor: pointer;
+                                            @include boxShadowWithHover;
                                         }
                                 }
                                 input, textarea {
@@ -354,4 +358,8 @@
                         }
                 }
         }
+}
+
+.toastContainer {
+    @include toastContainer;
 }

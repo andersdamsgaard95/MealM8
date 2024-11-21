@@ -45,3 +45,31 @@ $boxShadow: -6px 6px 6px rgba(0, 0, 0, 0.3);
     min-height: 250px;
     padding: 20px;
 }
+
+@mixin boxShadowWithHover {
+    box-shadow: -6px 6px 6px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.3s ease;
+
+        &:hover {
+            box-shadow: -6px 6px 6px rgba(0, 0, 0, 0.5);
+        }
+}
+
+@mixin toastContainer {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background-color: #4caf50;
+    color: white;
+    padding: 30px 30px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    animation: fadeInOut 3s;
+    z-index: 20;
+
+    @keyframes fadeInOut {
+        0% { opacity: 0; transform: translateY(20px); }
+        10%, 90% { opacity: 1; transform: translateY(0); }
+        100% { opacity: 0; transform: translateY(20px); }
+    }
+}

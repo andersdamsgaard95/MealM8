@@ -17,7 +17,7 @@ const colorCodes = {
         mealTime: '#DAAE9C',
         prepTime: '#88C4E8',
         shopping: '#DAD09C',
-        activity: '#000000'
+        activity: '#9674E4'
 }
 
 export interface CalenderItem {
@@ -55,6 +55,7 @@ export default function Day ({
     const [editingListItemDescription, setEditingListItemDescription] = useState('');
     const [noteEditingIndex, setNoteEditingIndex] = useState<number | null>(null);
     const [newNote, setNewNote] = useState<string>('');
+    const [toast, setToast] = useState(false);
 
     function addItemToCalender(colorCode:string) {
         setCalender((prev) => [
@@ -157,6 +158,9 @@ export default function Day ({
         }
         setPickingList('');
         setClickedEventIndex(null);
+        
+        setToast(true);
+        setTimeout(() => setToast(false), 3000);
     }
 
     function showEventList(clickedIndex:number) {
@@ -491,6 +495,16 @@ export default function Day ({
                     <img src="dayArrowRight.svg" alt="arrow right" />
                 </button>
             </div>
+
+            {/* TOAST MESSAGE */}
+            {
+                toast && (
+                    <div className={styles.toastContainer}>
+                        <p>You have added to this event!</p>
+                    </div>
+                )
+            }
+
         </section>
     )
 }

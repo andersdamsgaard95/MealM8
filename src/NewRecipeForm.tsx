@@ -57,6 +57,7 @@ export default function NewRecipeForm ({
     const [activityIsBeingEdited, setActivityIsBeingEdited] = useState(false);
     const [editingActivityName, setEditingActivityName] = useState('');
     const [editingActivityDescription, setEditingActivityDescription] = useState('');
+    const [toast, setToast] = useState(false);
 
     function toggleAccordion() {
         if (accordion === true) {
@@ -109,6 +110,9 @@ export default function NewRecipeForm ({
             setNewActivityName('');
             setNewActivityDescription('');
         }
+
+        setToast(true);
+        setTimeout(() => setToast(false), 3000);
     }
 
     function showActivityDetails(index:number) {
@@ -281,6 +285,15 @@ export default function NewRecipeForm ({
                         </div>
                     </div>
                 ) : null
+            }
+
+            {/* TOAST MESSAGE */}
+            {
+                toast && (
+                    <div className={styles.toastContainer}>
+                        <p>You have saved this recipe!</p>
+                    </div>
+                )
             }
 
         </section>

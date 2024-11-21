@@ -44,7 +44,7 @@
 #newRecipeForm #formHeadingPlusInputs .colorCodeHeadingLife .colorCode {
   height: 100%;
   width: 25px;
-  background-color: black;
+  background-color: #9674E4;
   border-radius: 3px 0 0 3px;
 }
 #newRecipeForm #formHeadingPlusInputs #formInputs {
@@ -81,6 +81,11 @@
   position: relative;
   font-size: 1rem;
   font-weight: 250;
+  box-shadow: -6px 6px 6px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.3s ease;
+}
+#newRecipeForm button:hover {
+  box-shadow: -6px 6px 6px rgba(0, 0, 0, 0.5);
 }
 #newRecipeForm button img {
   position: absolute;
@@ -119,7 +124,7 @@
 #savedActivitiesContainer .savedActivitiesAccordion .colorCodeHeading .colorCode {
   height: 100%;
   width: 25px;
-  background-color: black;
+  background-color: #9674E4;
   border-radius: 3px 0 0 3px;
 }
 #savedActivitiesContainer .savedActivitiesAccordion .colorCodeHeading .heading {
@@ -161,7 +166,7 @@
   display: flex;
   flex-direction: column;
   gap: 15px;
-  max-height: 250px;
+  max-height: 200px;
   overflow-y: auto;
 }
 #savedActivitiesContainer .savedActivitiesAccordion .savedActivitiesAccordionHidden ol li {
@@ -230,6 +235,11 @@
   padding: 10px 0 10px 0;
   flex: 1;
   cursor: pointer;
+  box-shadow: -6px 6px 6px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.3s ease;
+}
+.savedActivityDetails .activityContainer .notEditingActivity .buttonContainer .editActivityButton:hover {
+  box-shadow: -6px 6px 6px rgba(0, 0, 0, 0.5);
 }
 .savedActivityDetails .activityContainer .notEditingActivity .buttonContainer .deleteActivityButton {
   background-color: #FF0000;
@@ -238,6 +248,11 @@
   padding: 10px 0 10px 0;
   flex: 1;
   cursor: pointer;
+  box-shadow: -6px 6px 6px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.3s ease;
+}
+.savedActivityDetails .activityContainer .notEditingActivity .buttonContainer .deleteActivityButton:hover {
+  box-shadow: -6px 6px 6px rgba(0, 0, 0, 0.5);
 }
 .savedActivityDetails .activityContainer .editingTextArea {
   display: flex;
@@ -255,6 +270,11 @@
   border-radius: 5px;
   padding: 10px 0 10px 0;
   cursor: pointer;
+  box-shadow: -6px 6px 6px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.3s ease;
+}
+.savedActivityDetails .activityContainer .editingTextArea button:hover {
+  box-shadow: -6px 6px 6px rgba(0, 0, 0, 0.5);
 }
 .savedActivityDetails .exitActivityDetails {
   z-index: 99999;
@@ -271,4 +291,31 @@
 .savedActivityDetails .exitActivityDetails img {
   height: 100%;
   width: 100%;
+}
+
+.toastContainer {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  background-color: #4caf50;
+  color: white;
+  padding: 30px 30px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  animation: fadeInOut 3s;
+  z-index: 20;
+}
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  10%, 90% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
 }/*# sourceMappingURL=NewRecipeForm.module.css.map */
