@@ -15,8 +15,8 @@ It helps users manage their meals and activities, and add them dynamically into 
 
 #### Installation
 1. Clone this repository:
-   git clone https://github.com/andersdamsgaard95/MealM8.git
-   cd MealM8
+  git clone https://github.com/andersdamsgaard95/MealM8.git
+  cd MealM8
 
 2. Install dependencies:
   npm install
