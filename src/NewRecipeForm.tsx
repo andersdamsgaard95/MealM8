@@ -249,39 +249,41 @@ export default function NewRecipeForm ({
             {/* ACTIVITY DETAILS ON CLICK */}
             {
                 activityDetailsAreShown ? (
-                    <div className={styles.savedActivityDetails}>
-                        <div className={styles.activityContainer}>
-                            {
-                                activityIsBeingEdited ? (
-                                    <div className={styles.editingTextArea}>
-                                            <input 
-                                                type="text"
-                                                id='activityName'
-                                                value={editingActivityName}
-                                                onChange={handleEditChange}
-                                            />
-                                            <textarea 
-                                                id='activityDescription'
-                                                value={editingActivityDescription}
-                                                onChange={handleEditChange}
-                                            >
-                                                {editingActivityDescription}
-                                            </textarea>
-                                            <button onClick={() => saveActivityEdit(clickedActivityIndex)}>Save edit</button>
+                    <div className={styles.popUpBackground}>
+                        <div className={styles.savedActivityDetails}>
+                            <div className={styles.activityContainer}>
+                                {
+                                    activityIsBeingEdited ? (
+                                        <div className={styles.editingTextArea}>
+                                                <input 
+                                                    type="text"
+                                                    id='activityName'
+                                                    value={editingActivityName}
+                                                    onChange={handleEditChange}
+                                                />
+                                                <textarea 
+                                                    id='activityDescription'
+                                                    value={editingActivityDescription}
+                                                    onChange={handleEditChange}
+                                                >
+                                                    {editingActivityDescription}
+                                                </textarea>
+                                                <button onClick={() => saveActivityEdit(clickedActivityIndex)}>Save edit</button>
+                                            </div>
+                                    ) :
+                                        <div className={styles.notEditingActivity}>
+                                            <p className={styles.activityName}>{savedActivitiesList[clickedActivityIndex].activityName}</p>
+                                            <pre>{savedActivitiesList[clickedActivityIndex].activityDescription}</pre>
+                                            <div className={styles.buttonContainer}>
+                                                <button className={styles.editActivityButton} onClick={() => handleActivityEdit(savedActivitiesList[clickedActivityIndex].activityName, savedActivitiesList[clickedActivityIndex].activityDescription)}>Edit</button>
+                                                <button className={styles.deleteActivityButton} onClick={() => deleteActivity(clickedActivityIndex)}>Delete</button>
+                                            </div>
                                         </div>
-                                ) :
-                                    <div className={styles.notEditingActivity}>
-                                    <p className={styles.activityName}>{savedActivitiesList[clickedActivityIndex].activityName}</p>
-                                    <pre>{savedActivitiesList[clickedActivityIndex].activityDescription}</pre>
-                                    <div className={styles.buttonContainer}>
-                                        <button className={styles.editActivityButton} onClick={() => handleActivityEdit(savedActivitiesList[clickedActivityIndex].activityName, savedActivitiesList[clickedActivityIndex].activityDescription)}>Edit</button>
-                                        <button className={styles.deleteActivityButton} onClick={() => deleteActivity(clickedActivityIndex)}>Delete</button>
-                                    </div>
-                            </div>
                                 }
-                        </div>
-                        <div className={styles.exitActivityDetails} onClick={exitActivityDetails}>
-                            <img src="x.svg" alt="exit activity" />
+                            </div>
+                            <div className={styles.exitActivityDetails} onClick={exitActivityDetails}>
+                                <img src="x.svg" alt="exit activity" />
+                            </div>
                         </div>
                     </div>
                 ) : null

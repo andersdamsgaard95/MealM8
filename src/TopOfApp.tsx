@@ -112,9 +112,9 @@ export default function TopOfApp ({
                     <NewRecipeForm 
                         heading={'What meal (recipe) are you making?'}
                         inputId={'mealName'}
-                        inputPlaceholder={'Giv dit måltid et navn! ...Lasagne?'}
+                        inputPlaceholder={'Name your meal here!'}
                         textareaId={'mealRecipe'}
-                        textareaPlaceholder={'- 1x egg plant?... - 200g ost?...'}
+                        textareaPlaceholder={'Type ingredients here!'}
                         inputValue={newMealName}
                         textareaValue={newMealRecipe}
                         buttonText={'Save this recipe'}

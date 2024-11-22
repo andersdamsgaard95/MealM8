@@ -44,53 +44,55 @@ export default function PickingList ({ backgroundColor, colorCode, heading, colo
     });
 
     return (
-        <div className={styles.fixedListBox} style={{ backgroundColor: backgroundColor }}> 
-            <div className={styles.container}>
-                <p>{heading}</p>
-                <div className={styles.fieldsContainer}>
-                    <div className={styles.colorCodeHeading}>
-                        <div className={styles.colorCode} style={{backgroundColor: colorCode}}></div>
-                        <p>{colorCodeHeading}</p>
-                    </div>
-                    <div className={styles.searchDiv}>
-                        <label htmlFor="search">
-                            <input 
-                                type="search"
-                                id='search' 
-                                placeholder='search'
-                                value={searchWord}
-                                onChange={handleSearch}
-                            />
-                        </label>
-                    </div>
-                    <ul className={styles.listContainer}>
-                        {
-                            filteredSearchList.length > 0 ?
-                            filteredSearchList.map((item, index) => (
-                                <li className={styles.pickingListItem}>
-                                    <p>
-                                        {listType === 'meals' ? (item as SavedMeal).mealName : listType === 'activities' ? (item as SavedActivity).activityName : null}
-                                    </p>
-                                    <img 
-                                        src="plusIcon.svg" 
-                                        alt="add to event"
-                                        onClick={() => getActualIndex(index)}
-                                    />
-                                </li>
-                            )) : 
-                                listType === 'meals' ? 
-                                    <p>You have no saved recipes... <br/> Go to "New recipe" and save some recipes</p> : 
-                                listType === 'activities' ? 
-                                    <p>You have no saved activities <br/> Go to "Life" and save some activities</p> : null
-                        }
-                    </ul>
-                </div>                       
-            </div> 
-            {/* EXIT BUTTON */}
-            <div className={styles.exitButton} onClick={exitPickingList}>
-                <img src="x.svg" alt="exit" />
-            </div> 
+        <div className={styles.popUpBackground}>
+            <div className={styles.fixedListBox} style={{ backgroundColor: backgroundColor }}> 
+                <div className={styles.container}>
+                    <p>{heading}</p>
+                    <div className={styles.fieldsContainer}>
+                        <div className={styles.colorCodeHeading}>
+                            <div className={styles.colorCode} style={{backgroundColor: colorCode}}></div>
+                            <p>{colorCodeHeading}</p>
+                        </div>
+                        <div className={styles.searchDiv}>
+                            <label htmlFor="search">
+                                <input 
+                                    type="search"
+                                    id='search' 
+                                    placeholder='search'
+                                    value={searchWord}
+                                    onChange={handleSearch}
+                                />
+                            </label>
+                        </div>
+                        <ul className={styles.listContainer}>
+                            {
+                                filteredSearchList.length > 0 ?
+                                filteredSearchList.map((item, index) => (
+                                    <li className={styles.pickingListItem}>
+                                        <p>
+                                            {listType === 'meals' ? (item as SavedMeal).mealName : listType === 'activities' ? (item as SavedActivity).activityName : null}
+                                        </p>
+                                        <img 
+                                            src="plusIcon.svg" 
+                                            alt="add to event"
+                                            onClick={() => getActualIndex(index)}
+                                        />
+                                    </li>
+                                )) : 
+                                    listType === 'meals' ? 
+                                        <p>You have no saved recipes... <br/> Go to "New recipe" and save some recipes</p> : 
+                                    listType === 'activities' ? 
+                                        <p>You have no saved activities <br/> Go to "Life" and save some activities</p> : null
+                            }
+                        </ul>
+                    </div>                       
+                </div> 
+                {/* EXIT BUTTON */}
+                <div className={styles.exitButton} onClick={exitPickingList}>
+                    <img src="x.svg" alt="exit" />
+                </div> 
 
+            </div>
         </div> 
     )
 }

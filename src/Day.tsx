@@ -414,51 +414,53 @@ export default function Day ({
                 {/* EVENT LIST BEING SHOWN */}
                 {
                     eventListIsShown && (
-                        <div className={styles.fixedEventList}>
-                            <ul>
-                                {
-                                    calender[clickedEventIndex].calenderItemList.length > 0 ?
-                                        calender[clickedEventIndex].calenderItemList.map((item, index) => (
-                                            index === eventListItemEditIndex ? 
-                                            (
-                                                <li>
-                                                    <label htmlFor="editingName">
-                                                        <input 
-                                                            type="text"
-                                                            id='editingName'
-                                                            value={editingListItemName}
-                                                            onChange={handleEdit} 
-                                                        />
-                                                    </label>
-                                                    <label htmlFor="editingDescription">
-                                                        <textarea 
-                                                            id="editingDescription"
-                                                            value={editingListItemDescription}
-                                                            onChange={handleEdit}
-                                                        >                                                          
-                                                        </textarea>
-                                                    </label>
-                                                    <button onClick={() => saveListItemEdit(index)}>Save Edit</button>
-                                                </li>
-                                            ) 
-                                            : 
-                                            (
-                                                <li>
-                                                    <p>{item.name}</p>
-                                                    <pre>{item.description}</pre>
-                                                    <div className={styles.buttonContainer}>
-                                                        <button onClick={() => editEventListItem(index, item.name, item.description)}>Edit</button>
-                                                        <button onClick={() => deleteEventListItem(index)}>Delete</button>
-                                                    </div>
-                                                </li>
-                                            )
-                                        ))
-                                    : 
-                                        <p>You haven't attached anything to this event...</p>
-                                }
-                            </ul>
-                            <div className={styles.exitButton} onClick={exitEventList}>
-                                <img src="x.svg" alt="exit" />
+                        <div className={styles.popUpBackground}>
+                            <div className={styles.fixedEventList}>
+                                <ul>
+                                    {
+                                        calender[clickedEventIndex].calenderItemList.length > 0 ?
+                                            calender[clickedEventIndex].calenderItemList.map((item, index) => (
+                                                index === eventListItemEditIndex ? 
+                                                (
+                                                    <li>
+                                                        <label htmlFor="editingName">
+                                                            <input 
+                                                                type="text"
+                                                                id='editingName'
+                                                                value={editingListItemName}
+                                                                onChange={handleEdit} 
+                                                            />
+                                                        </label>
+                                                        <label htmlFor="editingDescription">
+                                                            <textarea 
+                                                                id="editingDescription"
+                                                                value={editingListItemDescription}
+                                                                onChange={handleEdit}
+                                                            >                                                          
+                                                            </textarea>
+                                                        </label>
+                                                        <button onClick={() => saveListItemEdit(index)}>Save Edit</button>
+                                                    </li>
+                                                ) 
+                                                : 
+                                                (
+                                                    <li>
+                                                        <p>{item.name}</p>
+                                                        <pre>{item.description}</pre>
+                                                        <div className={styles.buttonContainer}>
+                                                            <button onClick={() => editEventListItem(index, item.name, item.description)}>Edit</button>
+                                                            <button onClick={() => deleteEventListItem(index)}>Delete</button>
+                                                        </div>
+                                                    </li>
+                                                )
+                                            ))
+                                        : 
+                                            <p>You haven't attached anything to this event...</p>
+                                    }
+                                </ul>
+                                <div className={styles.exitButton} onClick={exitEventList}>
+                                    <img src="x.svg" alt="exit" />
+                                </div>
                             </div>
                         </div>
                     )
