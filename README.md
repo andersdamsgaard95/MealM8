@@ -15,20 +15,20 @@ It helps users manage their meals and activities, and add them dynamically into 
 
 #### Installation
 1. New folder:
-  Create new folder and right click to open terminal at folder
+   - Create new folder and right click to open terminal at folder
 
 2. Clone this repository:
-  Type the following into terminal:
-  git clone https://github.com/andersdamsgaard95/MealM8.git
-  cd MealM8
+   - Type the following into terminal:
+     - git clone https://github.com/andersdamsgaard95/MealM8.git
+     - cd MealM8
 
 3. Install dependencies:
-  Type the following into terminal:
-  npm install
+   - Type the following into terminal:
+     - npm install
 
 4. Start the development server:
-  Type the following into terminal:
-  npm run dev
+   - Type the following into terminal:
+     - npm run dev
 
 5. Open Application:
-  Click the generated link to open application
+   - Click the generated link to open application
